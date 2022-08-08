@@ -1,0 +1,170 @@
+<!-- Modal -->
+<!--begin::Post-->
+<div class="post d-flex flex-column-fluid" id="kt_post">
+    <!--begin::Container-->
+    <div id="kt_content_container" class="container-xxl">
+        <!--begin::Row-->
+        <div class="row gy-5 g-xl-8">
+            <!--begin::Col-->
+            <div class="col-xl-12">
+                <!--begin::List Widget 3-->
+                <div class="card card-xxl-stretch mb-xl-3 shadow-none">
+                    <div class="border-0 row mx-0 justify-content-between align-items-end mb-8 col-12 px-0">
+                        <div class="col-md-9 row">
+                            <!--begin::Name-->
+                            <div class="d-flex fw-bolder text-secondary flex-wrap col-md-8 col-12">
+                                <h4 class="fs-2qx text-dark mb-0">Collections</h4>
+                                <span>
+                                    <a class="" href="javascript:void(0)" onclick="showAjax('','payment_receipt.html','page_content')">
+                                        <i class="bi bi-arrow-right-circle text-gray-800 px-5 fs-2x"></i>
+                                    </a>
+                                </span>
+                                <span class="text-muted px-0 fs-6 fw-bold col-md-10 col-lg-12 mt-1">View Payment
+                                    Reports</span>
+                            </div>
+
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-end my-auto">
+                            <a class="btn btn-primary rounded-1" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-circle"></i> Add New Collection</a>
+                        </div>
+                    </div>
+                    <!--end::Body-->
+                </div>
+                <!--end:List Widget 3-->
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="row mx-0 justify-content-between py-3">
+
+                <div class="col-md-12 my-5" id="nocollectionDiv">
+                    <!--begin::Heading-->
+                    <div class="text-center p-20" style="background: #F8F7F8;">
+                        <img src="assets/media/empty.png" class="" alt="no tansactions" />
+                        <p class="text-gray-800 px-0 fs-5 py-5 fw-bold">No collection done yet. Your transaction <br>
+                            will appear here when done by users
+                        </p>
+                    </div>
+                    <!--end::Heading-->
+                </div>
+
+                <!--begin::Search Result-->
+                <div class="row" id="collectionDiv">
+                    <div class="col-lg-12">
+                        <div class="card card-custom gutter-b">
+                            <!--begin::Header-->
+                            <!-- <div class="card-header border-0 pt-5 px-0 bg-transparent">
+                            <h6 class="card-title align-items-start flex-column">
+                                <span class="card-label fw-bolder mb-1 text-dark">Showing Transactions</span>
+                            </h6>
+                        </div> -->
+                            <div class="card-body px-0 pt-1">
+                                <!--begin: Datatable-->
+                                <div class="table-responsive">
+                                    <table class="table table-row-bordered align-middle gy-5 gs-7 border rounded w-100" id="collection_table"></table>
+                                </div>
+                                <!--end: Datatable-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Search Result-->
+            </div>
+            <!--end::Col-->
+        </div>
+        <!--end::Row-->
+    </div>
+    <!--end::Container-->
+</div>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Collection</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="form" id="add_collections">
+                    <div class="row">
+                        <div class="row g-7">
+                            <div class="col-md-6">
+                                <label for="course_title" class="form-label">Collection Name</label>
+                                <input type="text" class="form-control form-control-solid inp" name="collection_name" id="collection_name" fields="course_title" placeholder="Collection Name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="course_code" class="form-label"> Collection Code</label>
+                                <input type="text" class="form-control form-control-solid inp" name="collection_code" fields="course_code" placeholder="Collection Code" id="collection_code">
+                            </div>
+
+                        </div>
+                        <div class="row g-7">
+                            <div class="col-md-6">
+                                <label for="course_amount" class="form-label"> Amount</label>
+                                <input type="text" class="form-control form-control-solid inp" name="collection_amount" fields="collection_amount" placeholder="Amount" id="collection_amount">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="category_id" class="form-label">Application</label>
+                                <select class="form-select form-control-solid inp" data-hide-search="true" id="application_code" name="application_code" fields="application_code" data-control="select2">
+                                    <option value="APPLVHS4730">React JS</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row g-7">
+                            <div class="col-md-6">
+                                <label for="start_date" class="form-label">Payment Gateway</label>
+                                <select class="form-select form-select-solid inp" data-control="select2" data-hide-search="true" id="payment_gateway" name="payment_gateway" fields="payment_gateway">
+                                    <option value="Paypanel">Paypanel</option>
+                                    <option value="Interswitch">Interswitch</option>
+                                    <option value="Paystack">Paystack</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="end_date" class="form-label">Payment Mode</label>
+                                <select class="form-select form-select-solid inp" data-control="select2" data-hide-search="true" id="payment_mode" name="payment_mode" fields="payment_mode">
+                                    <option value="Demo">Demo</option>
+                                    <option value="Live">Live</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row g-7">
+                            <div class="col-md-6">
+                                <label for="start_date" class="form-label">Payment Status</label>
+                                <select class="form-select form-select-solid inp" data-control="select2" data-hide-search="true" id="payment_status" name="payment_status" fields="payment_status">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="end_date" class="form-label">OTP</label>
+                                <input type="text" class="form-control form-control-solid inp" name="otp" fields="otp" placeholder="otp" id="otp">
+                            </div>
+                        </div>
+
+                        <div class="row g-7">
+                            <div class="col-md-12">
+                                <label for="course_desc" class="form-label">Description</label>
+                                <textarea id="collection_description" name="collection_description" fields="collection_description" class="form-control form-control-solid inp" rows="2" placeholder="Type a description"></textarea>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="createcollection()">Save Collection</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    populateCollection();
+    getApplication();
+
+</script>

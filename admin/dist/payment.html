@@ -1,0 +1,392 @@
+<!--begin::Post-->
+<div class="post d-flex flex-column-fluid" id="kt_post">
+    <!--begin::Container-->
+    <div id="kt_content_container" class="container-xxl">
+        <!--begin::Row-->
+        <div class="row gy-5 g-xl-8">
+            <!--begin::Col-->
+            <div class="col-xl-12">
+                <!--begin::List Widget 3-->
+                <div class="card card-xxl-stretch mb-xl-3 shadow-none">
+                    <div class="border-0 row mx-0 justify-content-between align-items-end mb-8 col-12 px-0">
+                        <div class="col-md-9 row">
+                            <!--begin::Name-->
+                            <div class="d-flex fw-bolder text-secondary flex-wrap col-md-8 col-12">
+                                <h4 class="fs-2qx text-dark mb-0">Collections</h4>
+                                <span>
+                                        <a class="" href="javascript:void(0)" onclick="showAjax('','payment_receipt.html','page_content')">
+                                            <i class="bi bi-arrow-right-circle text-gray-800 px-5 fs-2x"></i>
+                                        </a>
+                                    </span>
+                                <span class="text-muted px-0 fs-6 fw-bold col-md-10 col-lg-12 mt-1">View Payment
+                                    Reports</span>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-end my-auto">
+                            <a class="btn btn-primary rounded-1" onclick="showAjax('', 'new_batch.html', 'page_content');"><i class="bi bi-plus-circle"></i> Add New Collection</a>
+                        </div>
+                    </div>
+                    <!--end::Body-->
+                </div>
+                <!--end:List Widget 3-->
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="row mx-0 justify-content-between py-3">
+
+                <div class="col-md-12 my-5" id="noTransaction">
+                    <!--begin::Heading-->
+                    <div class="text-center p-20" style="background: #F8F7F8;">
+                        <img src="assets/media/empty.png" class="" alt="no tansactions" />
+                        <p class="text-gray-800 px-0 fs-5 py-5 fw-bold">No transactions done yet. Your transaction <br>
+                            will appear
+                            here when done by users
+                        </p>
+                    </div>
+                    <!--end::Heading-->
+                </div>
+
+                <!--begin::Search Result-->
+                <div class="row" id="collectionDiv">
+                    <div class="col-lg-12">
+                        <div class="card card-custom gutter-b">
+                            <!--begin::Header-->
+                            <!-- <div class="card-header border-0 pt-5 px-0 bg-transparent">
+                            <h6 class="card-title align-items-start flex-column">
+                                <span class="card-label fw-bolder mb-1 text-dark">Showing Transactions</span>
+                            </h6>
+                        </div> -->
+                            <div class="card-body px-0 pt-1">
+                                <!--begin: Datatable-->
+                                <div class="table-responsive">
+                                    <table class="table table-row-bordered align-middle gy-5 gs-7 border rounded w-100"
+                                        id="transaction_table"></table>
+                                </div>
+                                <!--end: Datatable-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Search Result-->
+            </div>
+            <!--end::Col-->
+        </div>
+        <!--end::Row-->
+    </div>
+    <!--end::Container-->
+</div>
+<!--end::Post-->
+<!-- <script>
+    $(document).ready(function(){
+        $(".form-select").select2();
+        $("#batchDiv").hide();
+        $("#noBatchDiv").show();
+    });
+
+    // Get list of all batches
+    function batchList() {
+        $.blockUI({
+            message: '<div class="text-center rounded-3 d-flex justify-content-center align-items-center" style="background-image: url(../assets/images/background_doodle.png); background-size: cover; height: 412px; width: 455px; background-color: #fff; background-blend-mode: multiply"> <div class=""> <div class="spinner-border text-primary p-15 display-2 mb-5" role="status"></div> <h4 class="text-secondary" style="padding-top:5px; font-family: GT Walsheim Pro Bold!important;">Just a moment</h4> </div></div>',
+            css: {
+                display: "flex",
+                padding: "20%",
+                margin: "0",
+                width: "100%",
+                height: "100vh",
+                top: "0%",
+                left: "0%",
+                textAlign: "center",
+                color: "#000",
+                border: "0px solid #aaa",
+                backgroundColor: "rgba(0,0,0,0.4)",
+                cursor: "wait",
+                alignItems: "center",
+                justifyContent: "center",
+            },
+        });
+
+        return dopost({
+            type: "POST",
+            url: api_link + "route/cohorts.php",
+            data: {
+                userid: getItem("userid"),
+                sessionid: getItem("sessionid"),
+                action: "get_cohorts",
+            },
+            success: function(response) {
+                try {
+                    json = JSON.parse(response);
+                    if (json.statuscode == 0) {
+                        $("#batchDiv").show();
+                        $("#noBatchDiv").hide();
+                        if ($.fn.DataTable.isDataTable("#batches_table")) {
+                            $("#batches_table").DataTable().destroy();
+                        }
+                        $.unblockUI("hide");
+                        var table = $("#batches_table").DataTable({
+                            // buttons: ['copy', 'excel', 'pdf'],
+                            data: json.data,
+                            // dom: '<lf<t>ip>',
+                            dom: "<'row'" +
+                                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+                                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                                ">" +
+                                "<'table-responsive'tr>" +
+                                "<'row'" +
+                                "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                                "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                                ">",
+                            responsive: true,
+                            columns: [
+                                { title: "Application Name", data: "application" },
+                                { title: "Batch Code", data: "batchcode" },
+                                { title: "Date From", data: "startdate" },
+                                { title: "Date To", data: "enddate" },
+                                { title: "Batch Days", data: "batchdys" },
+                                { title: "Batch Status", data: "status" },
+                                { title: "Actions" },
+                            ],
+                            columnDefs: [{
+                                    targets: -1,
+                                    orderable: false,
+                                    searchable: false,
+                                    render: function(data, type, row) {
+										var retstr = `<a href="#" onclick="addTimeSlot('${row.batch_id}','${row.batchcode}')" class="btn btn-primary me-2 mb-1" title="Add Time Slot">Add Time Slot </a>`
+                                         retstr += `<a href="#" onclick="editBatch('${row.batch_id}')" class="btn btn-outline btn-outline-primary me-2 mb-2" title="Edit batch">Edit</a>`;
+                                        retstr += `<a href="#" onclick="deleteBatch('${row.batch_id}',this)" class="btn btn-sm btn-primary" title="Delete course"><i class='bx bx-trash fs-3' ></i></a>`;
+                                        return retstr;
+                                    },
+                                },
+
+                                { defaultContent: "-", targets: "_all", },
+                               
+                            ],
+                        });
+                    } else {
+                        $.unblockUI("hide");
+                        $("#batchDiv").hide();
+                        $("#noBatchDiv").show();
+                        Swal.fire({
+                            title: "ITA Portal",
+                            html: json.status,
+                            icon: "error",
+                            buttonsStyling: true,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: { confirmButton: "btn btn-sm btn-primary" },
+                        });
+                    }
+                } catch (e) {
+                    console.error(e.message);
+                }
+            },
+            error: function() {
+                loadingerr;
+            },
+        });
+    }
+
+    // Edit a batch
+    function editBatch(batch) {
+        $.blockUI({
+            message: '<div class="text-center rounded-3 d-flex justify-content-center align-items-center" style="background-image: url(../assets/images/background_doodle.png); background-size: cover; height: 412px; width: 455px; background-color: #fff; background-blend-mode: multiply"> <div class=""> <div class="spinner-border text-primary p-15 display-2 mb-5" role="status"></div> <h4 class="text-secondary" style="padding-top:5px; font-family: GT Walsheim Pro Bold!important;">Just a moment</h4> </div></div>',
+            css: {
+                display: "flex",
+                padding: "20%",
+                margin: "0",
+                width: "100%",
+                height: "100vh",
+                top: "0%",
+                left: "0%",
+                textAlign: "center",
+                color: "#000",
+                border: "0px solid #aaa",
+                backgroundColor: "rgba(0,0,0,0.4)",
+                cursor: "wait",
+                alignItems: "center",
+                justifyContent: "center",
+            },
+        });
+		return dopost({
+        url: api_link + "route/cohorts.php",
+        data: {
+            action: "get_this_cohort",
+            userid: getItem("userid"),
+            sessionid: getItem("sessionid"),
+            batchid: batch
+        },
+        type: "POST",
+        success: function(response) {
+            try {
+                var json = JSON.parse(response);
+                if (json.statuscode == 0) {
+                    let config = json.data;
+					$("#updateBatchModalBody").load("update_batch.html", function () {
+						$("#modalHeader").html("Update Batch")
+						$("#editbtn").attr("onclick", "updateBatch('" + batch + "')");
+						var form = $("#update_batch_form");
+						if (form.length > 0) {
+                            var datafields = {};
+                            form.find('.ac').each(function() {
+                                try {
+                                    if (config.hasOwnProperty($(this).attr('fields'))) {
+                                        $(this).val(config[$(this).attr('fields')]);
+                                    }
+                                } catch (e) {
+                                    console.log(e.message);
+                                }
+                            });
+                        }
+					});
+      				$("#updateBatchModal").modal("toggle");
+                } else {
+                    callSweetMsg(json, "ITA Portal", "error");
+                    $.unblockUI('hide');
+                }
+            } catch (e) {
+                $.unblockUI()
+                console.log(e.message);
+            }
+        },
+    });
+       
+    }
+
+    // Delete a batch
+    function deleteBatch(actid, btn) {
+        Swal.fire({
+            title: "ITA Portal",
+            text: "Are you sure you want to delete this record?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes Delete!",
+            customClass: {
+                confirmButton: "btn btn-sm btn-primary",
+                cancelButton: "btn btn-sm btn-danger",
+            },
+        }).then((result) => {
+            if (result.value) {
+                $.blockUI({ message: '<div class="spinner-grow text-danger" role="status"><span class="visually-hidden"></span></div>', });
+                return dopost({
+                    type: "POST",
+                    url: api_link + "route/cohorts.php",
+                    data: {
+                        userid: getItem("userid"),
+                        sessionid: getItem("sessionid"),
+                        action: "delete_cohort",
+                        batchid: actid,
+                    },
+                    success: function(response) {
+                        try {
+                            $.unblockUI("hide");
+                            var trow = $(btn).closest("tr");
+                            var json = JSON.parse(response);
+                            if (json.statuscode == 0) {
+                                $.unblockUI("hide");
+                                trow.fadeOut(400, function(trow) {
+                                    $('#batches_table').row(trow).remove().draw();
+                                });
+                                Swal.fire({
+                                    title: "ITA Portal",
+                                    html: json.status,
+                                    icon: "success",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok, got it!",
+                                    customClass: { confirmButton: "btn btn-sm btn-primary" },
+                                });
+                                // $('#courses_table').DataTable().ajax.reload();
+                            } else {
+                                Swal.fire({
+                                    title: "ITA Portal",
+                                    html: json.status,
+                                    icon: "error",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok, got it!",
+                                    customClass: { confirmButton: "btn btn-sm btn-primary" },
+                                });
+                                $.unblockUI("hide");
+                            }
+                        } catch (e) {
+                            console.error(e.message);
+                        }
+                    },
+                });
+            } else if (result.dismiss === "cancel") {
+                Swal.fire({
+                    title: "ITA Portal",
+                    text: "Your delete was cancelled :)",
+                    icon: "error",
+                    buttonsStyling: false,
+                    confirmButtonText: "Ok, got it!",
+                    customClass: { confirmButton: "btn btn-sm btn-primary" },
+                });
+            }
+        });
+    }
+ // Update a batch
+	function updateBatch(batchid) {
+		$.blockUI({
+            message: '<div class="text-center rounded-3 d-flex justify-content-center align-items-center" style="background-image: url(../assets/images/background_doodle.png); background-size: cover; height: 412px; width: 455px; background-color: #fff; background-blend-mode: multiply"> <div class=""> <div class="spinner-border text-primary p-15 display-2 mb-5" role="status"></div> <h4 class="text-secondary" style="padding-top:5px; font-family: GT Walsheim Pro Bold!important;">Just a moment</h4> </div></div>',
+            css: {
+                display: "flex",
+                padding: "20%",
+                margin: "0",
+                width: "100%",
+                height: "100vh",
+                top: "0%",
+                left: "0%",
+                textAlign: "center",
+                color: "#000",
+                border: "0px solid #aaa",
+                backgroundColor: "rgba(0,0,0,0.4)",
+                cursor: "wait",
+                alignItems: "center",
+                justifyContent: "center",
+            },
+        });
+		var formData = readFormData($("#update_batch_form"), true).data;
+        dopost({
+            "type": "POST",
+            "url": api_link + "route/cohorts.php",
+            "data": {
+                "userid": getItem('userid'),
+                "sessionid": getItem('sessionid'),
+                "datafields": formdata,
+                "action": "update_cohort",
+                batchid: batchid
+            },
+            "success": (response) => {
+                try {
+                    var json = JSON.parse(response);
+                    if (json.statuscode == 0) {
+                        swal.fire("ITA Portal", "Batch Added successfully", "success").then(
+							$("#updateBatchModal").modal("toggle").then(
+								showAjax("","batches.html","page_content")
+							)
+                        )
+                        $.unblockUI('hide');
+                    } else {
+                        callSweetMsg(json, "ITA Portal", "error");
+                        $.unblockUI('hide');
+                    }
+                    // fn();
+                    //affidavitProcess = null;
+                } catch (e) {
+                    console.error(e.stack);
+                    $.unblockUI('hide');
+                }
+            },
+        });
+    }
+ // Add a time slot
+ function addTimeSlot(batchid, batchcode) {
+	showAjax('', 'add_new_time.html', 'page_content',function(responseTxt, statusTxt, xhr){
+setItem("batchcode",batchcode)
+setItem("batchid",batchid)
+getBatch(batchid)
+	})
+       
+    }
+
+ 
+</script> -->

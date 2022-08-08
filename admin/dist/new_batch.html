@@ -1,0 +1,186 @@
+<div class="post d-flex flex-column-fluid" id="kt_post">
+    <!--begin::Container-->
+    <div id="kt_content_container" class="container-xxl">
+        <div class="row">
+            <div class="col-lg-12 text-darkpurple">
+                <h4 class="fs-2qx text-dark mb-0">
+                    <a href="#" onclick='showAjax("","batches.html","page_content")'>
+                        <i class="bi bi-arrow-left-circle text-dark me-4 fs-2x"></i>
+                    </a>
+                    New Batch
+                </h4>
+                <p class="fs-5 text-gray-600">Easily set up your batches</p>
+            </div>
+        </div>
+
+        <!--begin::Row-->
+        <div class="row">
+            <!--begin::Col-->
+
+            <!--end::Col-->
+            <!--begin::Add new card-->
+            <div class="col-md-12">
+                <!--begin::Card-->
+                <div class="card h-md-100 card-stretch">
+                    <!--begin::Card body-->
+                    <div class="card-body px-0">
+                        <!--begin::Button-->
+                        <form id="new_batch_form" class="form" action="#">
+                            <!--begin::Heading-->
+                            <div class="row mb-10">
+                                <!--begin::Col-->
+                                <div class="col-md-6">
+                                    <!--begin::Label-->
+                                    <label class="required fs-5 fw-bold mb-2 form-label">Application
+                                        Name</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <select class="form-select form-control form-control-solid w-100" aria-label="Select example" id="application" name="application" fields="application">
+
+                                    </select>
+                                    <!--end::Input-->
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-6">
+                                    <!--end::Label-->
+                                    <label class="required fs-5 fw-bold mb-2 form-label">New Batch
+                                        Code</label>
+                                    <!--end::Label-->
+                                    <!--end::Input-->
+                                    <input class="form-control form-control-solid" type="text" id="batchcode" name="batchcode" fields="batchcode" />
+                                    <!--end::Input-->
+
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Heading-->
+                                <!--begin::Input group-->
+                            </div>
+                            <div class="row mb-10">
+                                <!--begin::Col-->
+                                <div class="col-md-6">
+                                    <!--begin::Label-->
+                                    <label class="required fs-5 fw-bold mb-2 form-label">Batch Status</label>
+                                    <!--end::Label-->
+                                    <!--end::Input-->
+                                    <select class="form-select form-control form-control-solid w-100" aria-label="Select example" id="status" name="status" fields="status">
+                                        <option></option>
+                                        <option value="Pending">Pending</option>
+                                        <option value="On going">On going</option>
+                                        <option value="Closed">Closed</option>
+                                        <option value="Completed">Completed</option>
+                                    </select>
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-6">
+                                    <!--end::Label-->
+                                    <label class="required fs-5 fw-bold mb-2 form-label">Batch Days</label>
+                                    <!--end::Label-->
+                                    <!--end::Input-->
+                                    <select class="form-select form-control form-control-solid w-100" aria-label="Select example" id="batchdys" name="batchdys" fields="batchdys" multiple="multiple">
+                                        <option value></option>
+                                        <option value="Monday">Monday</option>
+                                        <option value="Tuesday">Tuesday</option>
+                                        <option value="Wednesday">Wednesday</option>
+                                        <option value="Thursday">Thursday</option>
+                                        <option value="Friday">Friday</option>
+                                        <option value="Saturday">Saturday</option>
+                                    </select>
+                                    <!--end::Input-->
+
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Heading-->
+                                <!--begin::Input group-->
+                            </div>
+
+                            <div class="row mb-10">
+                                <!--begin::Col-->
+                                <div class="col-md-6">
+                                    <!--begin::Label-->
+                                    <label class="required fs-5 fw-bold mb-2 form-label">Start date</label>
+                                    <!--end::Label-->
+                                    <!--end::Input-->
+                                    <input class="form-control form-control-solid" id="startdate" type="date" name="startdate" fields="startdate" />
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-md-6">
+                                    <!--end::Label-->
+                                    <label class="required fs-5 fw-bold mb-2 form-label">End Date</label>
+                                    <!--end::Label-->
+                                    <!--end::Input-->
+                                    <input class="form-control form-control-solid" id="enddate" type="date" name="enddate" fields="enddate" />
+                                    <!--end::Input-->
+
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Heading-->
+                                <!--begin::Input group-->
+                            </div>
+                            <!--end::Actions-->
+                            <button id="add_batch" onclick="addBatch()" type="button" class="btn btn-primary">
+                                <i class="bi bi-check2 fs-4 me-2"></i>
+                                Add New Batch
+                            </button>
+                        </form>
+                        <!--begin::Button-->
+                    </div>
+                    <!--begin::Card body-->
+                </div>
+                <!--begin::Card-->
+            </div>
+            <!--begin::Add new card-->
+        </div>
+        <!--end::Row-->
+        <!--begin::Modals-->
+        <!--begin::Modal - Add role-->
+
+        <!--end::Modal - Update role-->
+        <!--end::Modals-->
+    </div>
+    <!--end::Container-->
+</div>
+<!--end::Post-->
+<script>
+    ddlistApplications($("#application"))
+    $("select").select2({
+        placeholder: "Select",
+    })
+    $("#batchdys").select2({
+        multiple: true,
+        placeholder: "Select",
+    });
+
+    function addBatch() {
+        blockUI.block();
+        var formData = readFormData($("#new_batch_form"), true).data;
+        dopost({
+            "type": "POST",
+            "url": api_link + "route/cohorts.php",
+            "data": {
+                "userid": getItem('userid'),
+                "sessionid": getItem('sessionid'),
+                "datafields": formData,
+                "action": "create_new_cohort"
+            },
+            "success": (response) => {
+                try {
+                    var json = JSON.parse(response);
+                    if (json.statuscode == 0) {
+                        swal.fire("ITA Portal", "Batch Added successfully", "success").then(
+                            showAjax("", "batches.html", "page_content"))
+                        blockUI.release();
+                    } else {
+                        callSweetMsg(json, "ITA Portal", "error");
+                        blockUI.release();
+                    }
+                } catch (e) {
+                    console.error(e.stack);
+                    blockUI.release();
+                }
+            },
+        });
+    }
+</script>

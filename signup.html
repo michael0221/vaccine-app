@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--begin::Head-->
+
+<head>
+	<title>ITA | Sign up</title>
+	<meta charset="utf-8" />
+	<meta name="description"
+		content="Learn the latest technologies and master in-demand skills in a hands-on, learning environment led by expert instructors.">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!--begin::Fonts-->
+	<link rel="shortcut icon" type="image/x-icon" href="landing/assets/images/favicon.png">
+	<!--end::Fonts-->
+	<!--begin::Global Stylesheets Bundle(used by all pages)-->
+	<link href="dashboard/dist/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="dashboard/dist/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+
+	<style>
+		.text-primary,
+		.link-primary {
+			color: #0066ff !important;
+		}
+
+		.btn-primary,
+		.form-check-input:checked {
+			color: #FFFFFF !important;
+			border-color: #0066ff !important;
+			background-color: #0066ff !important;
+		}
+
+		.btn.btn-primary:hover,
+		.btn.btn-primary:hover:not(.btn-active) {
+			color: #FFFFFF !important;
+			background-color: #004fc6 !important;
+			border-color: #004fc6 !important;
+		}
+
+		::-webkit-input-placeholder {
+			/* Chrome/Opera/Safari */
+			font-size: 13px;
+			font-weight: 400 !important;
+		}
+	</style>
+	<!--end::Global Stylesheets Bundle-->
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+
+<body id="kt_body" class="bg-body">
+	<!--begin::Main-->
+	<!--begin::Root-->
+	<div class="d-flex flex-column flex-root">
+		<!--begin::Authentication - Sign-up -->
+		<div class="d-flex flex-column flex-lg-row flex-column-fluid">
+
+			<!--begin::Body-->
+			<div class="d-flex flex-column flex-lg-row-fluid py-10">
+				<!--begin::Content-->
+				<div class="d-flex flex-center flex-column flex-column-fluid">
+					<!--begin::Wrapper-->
+					<div class="w-lg-600px px-10 px-lg-15 pb-15 pt-10 mx-auto">
+						<!--begin::Form-->
+						<form class="form w-100" novalidate="novalidate" id="kt_sign_up_form">
+							<!--begin::Heading-->
+							<div class="mb-6">
+								<div class="header-logo mb-20">
+									<a href="index.html">
+										<img class="dark-logo" src="landing/assets/pngwing.com (2).png" width="50px" alt="ITA Logo">
+									</a>
+								</div>
+								<!--begin::Title-->
+								<h1 class="text-dark mb-3 display-2 fw-boldest fs-2qx">Create Account</h1>
+								<!--end::Title-->
+								<!--begin::Link-->
+								<div class="row">
+									<div class="col-md-6 col-sm-12 single-input mb-30">
+										<p class="fs-7 mb-1">Get started by creating a new account</p>
+									</div>
+									<div class="col-md-6 col-sm-12 single-input mb-30 text-start text-lg-end">
+										<p class="fs-7">Already have an account?
+											<a href="login.html" class="link-primary">Login</a>
+										</p>
+									</div>
+								</div>
+								<!--end::Link-->
+							</div>
+							<!--end::Heading-->
+							<!--begin::Input group-->
+							<div class="row fv-row mb-0 mb-lg-7">
+								<!--begin::Col-->
+								<div class="col-xl-6 mb-7 mb-lg-0">
+									<label for="firstname" class="form-label fw-bold text-dark fs-6">First Name</label>
+									<input class="form-control form-control-lg" type="text"
+										placeholder="Enter your first name" id="firstname" name="firstname"
+										autocomplete="off" />
+								</div>
+								<!--end::Col-->
+								<!--begin::Col-->
+								<div class="col-xl-6 mb-7 mb-lg-0">
+									<label for="lastname" class="form-label fw-bold text-dark fs-6">Last Name</label>
+									<input class="form-control form-control-lg" type="text"
+										placeholder="Enter your last name" id="lastname" name="lastname"
+										autocomplete="off" />
+								</div>
+								<!--end::Col-->
+							</div>
+							<!--end::Input group-->
+
+							<!--begin::Input group-->
+							<div class="row fv-row mb-0 mb-lg-7">
+								<div class="col-xl-12 mb-7 mb-lg-0">
+									<label for="username" class="form-label fw-bold text-dark fs-6">Username</label>
+									<input class="form-control form-control-lg" type="text"
+										placeholder="Enter your username" id="email" name="email" autocomplete="off" />
+								</div>
+
+								<!-- <div class="col-xl-6 mb-7 mb-lg-0">
+									<label for="phoneno" class="form-label fw-bold text-dark fs-6">Phone</label>
+									<input class="form-control form-control-lg" type="text"
+										placeholder="Enter your phone number" id="phoneno" name="phoneno"
+										autocomplete="off" />
+								</div> -->
+							</div>
+							<!--end::Input group-->
+							<!--begin::Input group-->
+							<div class="row fv-row mb-0 mb-lg-7">
+								<!--begin::Col-->
+								<div class="col-xl-6 mb-7 mb-lg-0">
+									<label for="confirm_password"
+										class="form-label fw-bold text-dark fs-6">Password</label>
+									<input class="form-control form-control-lg" type="password"
+										placeholder="Enter password" id="password" name="password" autocomplete="off" />
+								</div>
+								<!--end::Col-->
+								<!--begin::Col-->
+								<div class="col-xl-6 mb-7 mb-lg-0">
+									<label for="confirm_password" class="form-label fw-bold text-dark fs-6">Confirm
+										Password</label>
+									<input class="form-control form-control-lg" type="password"
+										placeholder="Comfirm password" id="confirm_password" name="confirm_password"
+										autocomplete="off" />
+								</div>
+								<!--end::Col-->
+							</div>
+							<!--end::Input group=-->
+							<!--begin::Input group-->
+							<div class="fv-row mb-10">
+								<label class="form-check form-check-custom form-check-inline">
+									<input class="form-check-input" type="checkbox" name="toc" value="1" />
+									<span class="form-check-label text-gray-700 fs-7">By clicking on this checkbox, you
+										agree to our <a href="#" class="terms_of_service text-primary">Terms of
+											Service</a> and <a href="#" class="privacy_policy text-primary">Privacy
+											Policy</a>.</span>
+								</label>
+							</div>
+							<!--end::Input group-->
+							<!--begin::Actions-->
+							<div class="text-center">
+								<button type="button" id="kt_sign_up_submit" onclick="preRegister();"
+									class="btn btn-lg btn-primary w-100 rounded fw-normal">
+									<span class="indicator-label">Create an account</span>
+									<span class="indicator-progress">Please wait...
+										<span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+									</span>
+								</button>
+							</div>
+							<!--end::Actions-->
+						</form>
+						<!--end::Form-->
+						<!-- Start confirmation code -->
+						<form id="confirm-form" class="confirm-form d-none flex-column w-100" action="#"
+							style="margin-top: 50px">
+							<div class="d-flex align-items-center justify-content-between">
+								<div class="mb-6">
+									<div class="header-logo mb-20">
+										<a href="index.html">
+											<img class="dark-logo" src="landing/assets/images/logo.png" alt="ITA Logo">
+										</a>
+									</div>
+									<a href="#" id="go-back" title="Back">
+										<i class="bi bi-arrow-left-circle text-gray-800 py-5 fs-2x"></i>
+									</a>
+									<h3 class="title text-color mb-0 me-auto">Verify Account</h3>
+
+								</div>
+							</div>
+							<p class="text-muted">Enter the PIN sent to your email to verify your account</p>
+							<div id="confirm-code" class="row">
+								<div class="col-2 mb-20">
+									<input type="text" maxlength="1" minlength="1"
+										class="pin first-pin p-0 text-center form-control" id="pin1" name="pin1"
+										inputmode="numeric">
+								</div>
+								<div class="col-2 mb-20">
+									<input type="text" maxlength="1" minlength="1"
+										class="pin p-0 text-center form-control" id="pin2" name="pin2"
+										inputmode="numeric">
+								</div>
+								<div class="col-2 mb-20">
+									<input type="text" maxlength="1" minlength="1"
+										class="pin p-0 text-center form-control" id="pin3" name="pin3"
+										inputmode="numeric">
+								</div>
+								<div class="col-2 mb-20">
+									<input type="text" maxlength="1" minlength="1"
+										class="pin p-0 text-center form-control" id="pin4" name="pin4"
+										inputmode="numeric">
+								</div>
+								<div class="col-2 mb-20">
+									<input type="text" maxlength="1" minlength="1"
+										class="pin p-0 text-center form-control" id="pin5" name="pin5"
+										inputmode="numeric">
+								</div>
+								<div class="col-2 mb-20">
+									<input type="text" maxlength="1" minlength="1"
+										class="pin last-pin p-0 text-center form-control" id="pin6" name="pin6"
+										inputmode="numeric">
+								</div>
+							</div>
+
+
+							<div class="single-input mb-2 ">
+								<a href="#" id="btn_verify" onclick="checkConfirmcode()"
+									class="btn btn-md btn-primary text-white btn-width-100">Verify Email</a>
+							</div>
+
+							<div class="single-input mb-20 " style="margin-top: 20px">
+
+								<p class="secondary-text">
+									Didn't receive pin <a href="#" onclick="preRegister()"
+										class="text-danger">Resend</a>
+								</p>
+							</div>
+						</form>
+						<!-- End confirmation code -->
+					</div>
+					<!--end::Wrapper-->
+				</div>
+				<!--end::Content-->
+				<!--begin::Footer-->
+				<div class="d-flex flex-center flex-wrap fs-6 p-5 pb-0 d-none">
+					<!--begin::Links-->
+					<div class="d-flex flex-center fw-bold fs-6">
+						<a href="https://keenthemes.com" class="text-muted text-hover-primary px-2"
+							target="_blank">About</a>
+						<a href="https://devs.keenthemes.com" class="text-muted text-hover-primary px-2"
+							target="_blank">Support</a>
+						<a href="https://1.envato.market/EA4JP" class="text-muted text-hover-primary px-2"
+							target="_blank">Purchase</a>
+					</div>
+					<!--end::Links-->
+				</div>
+				<!--end::Footer-->
+			</div>
+			<!--end::Body-->
+
+			<!--begin::Aside-->
+			<div class="d-none d-lg-flex flex-column flex-lg-row-auto w-xl-500px positon-xl-relative bgi-position-x-center bgi-size-cover"
+				style="background-image:url(landing/assets/hosein-zanbori-pLi9Gh547ns-unsplash.jpg)">
+				
+			</div>
+			<!--end::Aside-->
+		</div>
+		<!--end::Authentication - Sign-up-->
+	</div>
+	<!--end::Root-->
+	<!--end::Main-->
+	<!--begin::Javascript-->
+	<script>var hostUrl = "dashboard/dist/assets/";</script>
+	<!--begin::Global Javascript Bundle(used by all pages)-->
+	<!-- <script src="dashboard/dist/assets/plugins/global/plugins.bundle.js"></script> -->
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<script src="dashboard/dist/assets/js/scripts.bundle.js"></script>
+	<script src="dashboard/dist/assets/js/common.js"></script>
+	<script src="dashboard/dist/assets/js/jQryfile.js"></script>
+	<script src="dashboard/dist/assets/js/fingerprint.min.js"></script>
+	<!--end::Global Javascript Bundle-->
+	<!--begin::Page Custom Javascript(used by this page)-->
+	<!-- <script src="dashboard/dist/assets/js/custom/authentication/sign-up/general.js"></script> -->
+	<!--end::Page Custom Javascript-->
+	<!--end::Javascript-->
+</body>
+<!--end::Body-->
+<script>
+	$(document).ajaxStart(function () {
+		// $.blockUI({
+		// 	message:
+		// 		'<div class="spinner-grow text-danger" role="status"><span class="visually-hidden"></span></div>',
+		// });
+	});
+
+
+	let firstname;
+	let lastname;
+	let email;
+	let phoneno;
+	let password;
+	let confirm_password;
+
+	$("#kt_sign_up_form").attr("disabled", true);
+
+	function preRegister() {
+		$('#kt_sign_up_form').find(".form-control").each((e, r) => {
+			if (r.value == '' || !r.value) return;
+		});
+
+		firstname = $("#firstname").val();
+		lastname = $("#lastname").val();
+		username = $("#email").val();
+		phoneno = $("#phoneno").val();
+		password = $("#password").val();
+		confirm_password = $("#confirm_password").val();
+ 
+		$.ajax({
+			url: "https://covid-vaccine-system.herokuapp.com/auth/create-super-user/",
+			type: "POST",
+			dataType: "text",
+			data: {
+				first_name: firstname,
+				last_name: lastname,
+				username: username,
+				// phoneno: phoneno,
+				password: password,
+				confirm_password: confirm_password
+			},
+			success: function (response) {
+				try {
+					console.log(response);
+					var json = JSON.parse(response);
+					if (json.statuscode == 200) {
+					
+						callSweetMsg(json, "Covid Vaccine System", "success");
+						hideForms();
+						navigatePins();
+						$("#kt_sign_up_form").hide();
+						$("#confirm-form").show();
+							// $.unblockUI();
+						// window.location.href = "user.html" + "?" + $.param(ret);
+					} else {
+						callSweetMsg(json, "Covid Vaccine System", "error");
+						$("#kt_sign_up_submit").html("Processing...");
+					}
+				} catch (e) {
+					console.log(e.message);
+				}
+			},
+		});
+
+	}
+	
+	function checkConfirmcode() {
+		confirmcode = Array.from($("#confirm-code").find(".pin"))
+			.map((e) => e.value)
+			.join("");
+
+		dopost({
+			url: api_link + "route/auth.php",
+			data: {
+				action: "checkpreregisterconfirmcode",
+				firstname: firstname,
+				lastname: lastname,
+				phoneno: phoneno,
+				email: email,
+				password: password,
+				confirm_password: confirm_password,
+				confirm_code: confirmcode,
+			},
+			type: "POST",
+			success: function (response) {
+				try {
+					var json = JSON.parse(response);
+					if (json.statuscode == 0) {
+						Swal.fire({
+							title: "ITA Portal",
+							html: json.status,
+							icon: "success",
+							allowOutsideClick: false,
+							confirmButtonText: "Login"
+						}).then(() => {
+							window.location.href = "login.html";
+						});
+						//   showAjax("", "new_password", "page_content");
+					} else {
+						callSweetMsg(json, "ITA", "error");
+					}
+				} catch (e) {
+					console.log(e.message);
+				}
+			},
+		});
+	}
+
+	function navigatePins() {
+		// $('.pin').val("");
+		$("#pin1").removeAttr("disabled");
+		$("#pin1").focus();
+
+		let paste = '';
+		document.querySelector('.pin').addEventListener('paste', function (event) {
+			// console.log(this)
+			paste = event.clipboardData.getData('text').trim();
+			if (paste.length > 1) {
+				$(this).parent().parent().find("input").removeAttr("disabled");
+				$(this).parent().parent().find("input")[0].value = paste[0] ?? '';
+				$(this).parent().parent().find("input")[1].value = paste[1] ?? '';
+				$(this).parent().parent().find("input")[2].value = paste[2] ?? '';
+				$(this).parent().parent().find("input")[3].value = paste[3] ?? '';
+				$(this).parent().parent().find("input")[4].value = paste[4] ?? '';
+				$(this).parent().parent().find("input")[5].value = paste[5] ?? '';
+			}
+		})
+
+		const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+		$(".pin").on("input", validateKey);
+		function validateKey(e) {
+			if (!keys.some((key) => key == e.target.value)) {
+				$(this).val("");
+				return;
+			} else if (!keys.some((key) => key == e.target.value) && $(this).hasClass("last-pin")) {
+				$(this).val("");
+				return;
+			} else {
+
+				$(this).blur();
+				$(this).parent().next().find("input").removeAttr("disabled");
+				$(this).parent().next().find("input").focus();
+
+			}
+		}
+	}
+
+	function hideForms() {
+		$('#confirm-form').removeClass('d-none')
+		$('#confirm-form').addClass('d-flex');
+		$('.sign_in_form').removeClass('d-none');
+		$('.sign_in_form').addClass('d-flex');
+
+	}
+
+
+	$("#go-back").click(function () {
+		goBack();
+	});
+
+</script>
+
+</html>

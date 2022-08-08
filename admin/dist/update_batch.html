@@ -1,0 +1,83 @@
+<!--begin::Button-->
+<form id="update_batch_form" class="form" action="#">
+    <!--begin::Heading-->
+    <div class="row mb-10">
+        <!--begin::Col-->
+        <div class="col-md-6">
+            <!--begin::Label-->
+            <label class="required fs-5 fw-bold mb-2 form-label">Batch Status</label>
+            <!--end::Label-->
+            <!--end::Input-->
+            <select class="form-select ac form-control form-control-solid" aria-label="Select example" id="status" name="status" fields="status">
+                <option></option>
+                <option value="Pending">Pending</option>
+                <option value="On going">On going</option>
+                <option value="Closed">Closed</option>
+                <option value="Completed">Completed</option>
+            </select>
+        </div>
+        <!--end::Col-->
+        <!--begin::Col-->
+        <div class="col-md-6">
+            <!--end::Label-->
+            <label class="required fs-5 fw-bold mb-2 form-label">Batch Days</label>
+            <!--end::Label-->
+            <!--end::Input-->
+            <select class="form-select ac form-control form-control-solid" aria-label="Select example" id="batchdys" name="batchdys" fields="batchdys" multiple>
+                <option value></option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+            </select>
+            <!--end::Input-->
+
+            <!--end::Col-->
+        </div>
+        <!--end::Heading-->
+        <!--begin::Input group-->
+    </div>
+    <div class="row mb-10">
+        <!--begin::Col-->
+        <div class="col-md-6">
+            <!--begin::Label-->
+            <label class="required fs-5 fw-bold mb-2 form-label">Start date</label>
+            <!--end::Label-->
+            <!--end::Input-->
+            <input class="form-control ac form-control-solid" placeholder="Pick date rage" id="startdate" type="date" name="startdate" fields="startdate" />
+        </div>
+        <!--end::Col-->
+        <!--begin::Col-->
+        <div class="col-md-6">
+            <!--end::Label-->
+            <label class="required ac fs-5 fw-bold mb-2 form-label">End Date</label>
+            <!--end::Label-->
+            <!--end::Input-->
+            <input class="form-control ac form-control-solid" placeholder="Pick date rage" id="enddate" type="date" name="enddate" fields="enddate" />
+            <!--end::Input-->
+
+            <!--end::Col-->
+        </div>
+        <!--end::Heading-->
+        <!--begin::Input group-->
+    </div>
+
+
+    <div class="mb-10">
+        <label class="form-label">Update Title</label>
+        <input class="form-control form-control-solid" type="text" id="update_title" name="update_title" fields="update_title" />
+    </div>
+    <div class="mb-10">
+        <label class="form-label">Update Message</label>
+        <textarea id="update_msg" name="update_msg" fields="update_msg" class="form-control form-control-solid mb-3" rows="5" data-kt-element="input" placeholder="Type a message"></textarea>
+    </div>
+    <!--end::Actions-->
+    <button id="editbtn" type="button" class="btn btn-primary">
+        <i class="bi bi-check2 fs-4 me-2"></i>
+        Update Batch
+    </button>
+</form>
+<script>
+</script>

@@ -1,0 +1,317 @@
+<style>
+    thead {
+      background-color: #f8f7f8;
+      font-weight: bolder;
+      color: #030749;
+   }
+
+   .page-item.active .page-link {
+      background-color: #fe5050;
+   }
+
+   .table th:last-child {
+       text-align: right!important;
+   }
+</style>
+<!--begin::Post-->
+<div class="post d-flex flex-column-fluid" id="kt_post">
+    <!--begin::Container-->
+    <div id="kt_content_container" class="container-fluid">
+        <!--begin::Col-->
+        <div class="col-xl-12">
+            <!--begin::List Widget 3-->
+            <div class="card card-xxl-stretch mb-xl-3 shadow-none">
+                <div class="row gy-5 gx-xl-8">
+                    <div class="col-lg-12 ">
+                        <div class="d-flex fw-bolder flex-wrap align-items-center">
+                            <span>
+                                <a class="" href="javascript:void(0)" onclick="showAjax('','courses.html','page_content')">
+                                    <i class="bi bi-arrow-left-circle text-gray-800 me-5 fs-2x"></i>
+                                </a>
+                            </span>
+                            <h4 class="fs-2qx mb-0" id="form_header">Add New Course</h4>
+                            <span class="text-muted px-0 fs-6 fw-bold col-md-10 col-12 mt-1">Easily set up your applications </span>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+            <!--end:List Widget 3-->
+        </div>
+        <!--end::Col-->
+    
+        <!--begin::Wrapper-->
+        <div class="col-xl-12 mb-3">
+            <!--begin::Form-->
+            <form class="form" id="create_course">
+                <div class="row">
+                    <div class="row g-7">
+                        <div class="col-md-4">
+                            <label for="course_title" class="form-label">Course Name</label>
+                            <input type="text" class="form-control form-control-solid inp" name="course_title" fields="course_title" placeholder="Course Name">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="course_code" class="form-label"> Course Code</label>
+                            <input type="text" class="form-control form-control-solid inp" name="course_code" fields="course_code" placeholder="Course Code">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="course_amount" class="form-label"> Amount</label>
+                            <input type="text" class="form-control form-control-solid inp" name="course_amount" fields="course_amount" placeholder="Amount">
+                        </div>
+                    </div>
+    
+                    <div class="row g-7">
+                        <div class="col-md-4">
+                            <label for="category_id" class="form-label"> Course Category</label>
+                            <select class="form-select form-select-solid inp" data-control="select2" data-hide-search="true" id="category_id" fields="category_id">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="start_date" class="form-label">Start Date</label>
+                            <input type="date" class="form-control form-control-solid inp" name="start_date" fields="start_date">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="end_date" class="form-label">End Date</label>
+                            <input type="date" class="form-control form-control-solid inp" name="end_date" fields="end_date">
+                        </div>
+                    </div>
+    
+    
+                    <div class="row g-7">
+                        <div class="col-md-12">
+                            <label for="course_desc" class="form-label">Description</label>
+                            <textarea id="course_desc" name="course_desc" fields="course_desc" class="form-control form-control-solid inp" rows="2" placeholder="Type a description"></textarea>
+                        </div>
+                    </div>
+                    <div class="row g-7">
+                        <div class="col-md-12">
+                            <a class="btn btn-primary" onclick="addCourses()" id="form_button"><i class="bi bi-check-lg text-white"></i> Add Course</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!--end::Form-->
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Container-->
+</div>
+
+<script>
+$(document).ready(function(){
+    $('.form-select').select2();
+    
+    $(".date").daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 1901,
+            maxYear: parseInt(moment().format("YYYY"),10)
+        }
+    );
+});
+// getCategories();
+function getCategories() {
+    blockUI.block();
+    return dopost({
+        type: "POST",
+        url: api_link + "route/categories.php",
+        data: {
+            userid: getItem("userid"),
+            sessionid: getItem("sessionid"),
+            action: "get_categories",
+        },
+        "success": function (response) {
+            try {
+                blockUI.release();
+                var json = JSON.parse(response);
+                var data = json.data;
+                if (json.statuscode == 0) {
+                    var strr = "";
+                    var catId = $("#category_id");
+                    catId.html("<option value=''>Select Category</option>")
+                    var x = "";
+                    $.each(json.data, function(key, val) {
+                        var option = $("<option/>");
+                        option.val(val.category_id);
+                        option.text(val.category_name);
+                        // option.attr("amount", val.amount);
+                        catId.append(option);
+                    });
+                    catId.select2({ tags: true });
+                }
+
+            } catch (e) {
+                console.error(e.status);
+            }
+        },
+        // "error": loadingerr
+    });
+}
+
+// Add courses
+function addCourses() {
+    blockUI.block();
+    var form = $("#create_course");
+    var formData = readFormData($("#create_course"), true).data;
+    if (form.length > 0) {
+        return dopost({
+            type: "POST",
+            url: api_link + "route/courses.php",
+            data: {
+                userid: getItem("userid"),
+                sessionid: getItem("sessionid"),
+                datafields: formData,
+                action: "create_course",
+            },
+            success: (response) => {
+                try {
+                    blockUI.release();
+                    var json = JSON.parse(response);
+                    if (json.statuscode == 0) {
+                        Swal.fire({
+                            title: "ITA Portal",
+                            html: json.status,
+                            icon: "success",
+                            buttonsStyling: false,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: { confirmButton: "btn btn-primary" },
+                        });
+                        showAjax("", "courses.html", "page_content");
+                    } else {
+                        Swal.fire({
+                            title: "ITA Portal",
+                            html: json.status,
+                            icon: "error",
+                            buttonsStyling: false,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: { confirmButton: "btn btn-primary" },
+                        });
+                        blockUI.release();
+                    }
+                } catch (e) {
+                    console.error(e.stack);
+                }
+            },
+        });
+    }
+}
+
+getCategories().then(()=>{
+    populateDataFunctionsCourses();
+});
+
+// Update course
+function updateCourse(course_id) {
+    blockUI.block();
+    var formData = readFormData($("#create_course"), true).data;
+    if (form.length > 0) {
+        return dopost({
+            url: api_link + "route/courses.php",
+            data: {
+                action: "update_course",
+                userid: getItem("userid"),
+                sessionid: getItem("sessionid"),
+                course_id: course_id
+            },
+            type: "POST",
+            success: function(response) {
+                success: (response) => {
+                    try {
+                        blockUI.release();
+                        var json = JSON.parse(response);
+                        if (json.statuscode == 0) {
+                            Swal.fire({
+                                title: "ITA Portal",
+                                html: json.status,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: { confirmButton: "btn btn-primary" },
+                            });
+                            showAjax("", "application.html", "page_content");
+                        } else {
+                            Swal.fire({
+                                title: "ITA Portal",
+                                html: json.status,
+                                icon: "error",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: { confirmButton: "btn btn-primary" },
+                            });
+                            blockUI.release();
+                        }
+                    } catch (e) {
+                        console.error(e.stack);
+                    }
+                }
+            }
+        });
+    }
+
+}
+
+
+// Get data and populate input
+function populateDataFunctionsCourses(action_name = "get_this_course") {
+    
+    var course_id = getItem("course_id");
+
+    if (course_id != "") {
+        $("#form_button").unbind("click");
+        $("#form_button").attr("onclick", "updateCourse('" + course_id + "')");
+        $("#form_button").html("Update Course");
+        $("#form_header").html("Update Course");
+
+        blockUI.block();
+        return dopost({
+            url: api_link + "/route/courses.php",
+            data: {
+                userid: getItem("userid"),
+                sessionid: getItem("sessionid"),
+                course_id: getItem("course_id"),
+                action: action_name,
+            },
+            type: "POST",
+            success: function(response) {
+                try {
+                    var json = JSON.parse(response);
+                    var data = json.data;
+                    if (json.statuscode == 0) {
+                        blockUI.release();
+                        
+                        var form = $("#create_course");
+                        if (form.length > 0) {
+                                form.find(".inp").each(function() {
+                                    try {
+                                        if (data.hasOwnProperty($(this).attr("fields"))) {
+                                            if (this.type == "select-one" || this.type == "select-many") {
+                                                var _id = $(this).attr("fields");
+                                                populateSelect(_id, data);
+                                            } else $(this).val(data[$(this).attr("fields")]);
+                                        }
+                                    } catch (e) {
+                                        console.log(e.message);
+                                    }
+                                });
+                        }
+                        blockUI.release();
+                    } else {
+                        console.log("No Data");
+                        blockUI.release();
+                    }
+                } catch (e) {
+                    console.error(e.stack);
+                    blockUI.release();
+                }
+            },
+            // "error": loadingerr
+        });
+    } else {
+        console.log("No data");
+        blockUI.release();
+    } 
+}
+
+
+</script>

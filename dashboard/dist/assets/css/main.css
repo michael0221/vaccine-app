@@ -1,0 +1,31 @@
+.btn-primary {
+    color: #000000;
+    background-color: #0066FF !important;
+    border-color: #0066FF !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+  }
+  .btn .btn-primary:hover {
+    color: #000000;
+    background-color: #005be1 !important;
+    border-color: #005be1 !important;
+  }
+  .btn.btn-primary:hover:not(.btn-active), .btn.btn-primary:active:not(.btn-active), .btn.btn-primary.active, .btn.btn-primary.show, .show > .btn.btn-primary {
+    color: #FFFFFF;
+    border-color: #1674fd;
+    background-color: #1674fd !important;
+  }
+  .text-hover-primary:hover, .text-primary, .menu-hover-primary .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) {
+    color: #005be1 !important;
+  }
+  .scrolltop, .scrolltop:hover {
+    background-color: #005be1;
+  }
+  .btn.btn-active-color-primary:hover:not(.btn-active), .btn.btn-active-color-primary:active:not(.btn-active), .btn.btn-active-color-primary.active, .btn.btn-active-color-primary.show, .show > .btn.btn-active-color-primary, .btn.btn-active-color-primary:hover:not(.btn-active) .svg-icon {
+    color: #005be1;
+  }
+  .bg-primary {
+    background-color: #005be1 !important;
+  }
+  .bg-success {
+    background-color: #38C976 !important;
+  }

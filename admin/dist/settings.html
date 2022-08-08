@@ -1,0 +1,269 @@
+<style>
+    table thead {
+        background-color: #F8F7F8;
+        color: #030749;
+        font-weight: bold;
+    }
+
+</style>
+<!--begin::Post-->
+
+<!--begin::Content-->
+<div class="post d-flex flex-column-fluid" id="kt_post">
+    <!--begin::Container-->
+    <div id="kt_content_container" class="container-xxl">
+        <!--begin::Row-->
+        <div class="row gy-5 g-xl-8">
+            <!--begin::Col-->
+            <div class="col-xl-12">
+                <!--begin::List Widget 3-->
+                <div class="card card-xxl-stretch mb-xl-3 shadow-none">
+                    <div class="border-0 row mx-0 justify-content-between align-items-end mb-8 col-12 px-0">
+                        <div class="col-md-9 row">
+                            <!--begin::Name-->
+                            <div class="d-flex fw-bolder text-secondary flex-wrap col-md-8 col-12">
+                                <h4 class="fs-2qx text-dark mb-0">Settings </h4>
+                                <span class="text-muted px-0 fs-6 fw-bold col-md-10 col-lg-12 mt-1">.</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-end my-auto">
+
+                        </div>
+                    </div>
+                    <!--end::Body-->
+                </div>
+                <!--end:List Widget 3-->
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="row mx-0 justify-content-between py-3">
+                <form action="">
+                    <div class="flex-lg-row-fluid">
+                        <!--begin:::Tabs-->
+                        <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-bold mb-8">
+                            <!--begin:::Tab item-->
+                            <li class="nav-item">
+                                <a class="nav-link text-active-primary active pb-4" data-bs-toggle="tab" href="#kt_user_view_overview_tab">General</a>
+                            </li>
+                            <!--end:::Tab item-->
+                            <!--begin:::Tab item-->
+                            <li class="nav-item">
+                                <a class="nav-link text-active-primary pb-4" data-kt-countup-tabs="true" data-bs-toggle="tab" href="#kt_user_view_overview_security">Payment</a>
+                            </li>
+                            <!--end:::Tab item-->
+                            <!--begin:::Tab item-->
+                            <!-- <li class="nav-item">
+                                <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"
+                                    href="#kt_user_view_overview_events_and_logs_tab">Users</a>
+                            </li> -->
+                            <!--end:::Tab item-->
+
+                        </ul>
+                        <!--end:::Tabs-->
+                        <!--begin:::Tab content-->
+                        <div class="tab-content" id="myTabContent">
+                            <!--begin:::Tab pane-->
+                            <div class="tab-pane fade active show" id="kt_user_view_overview_tab" role="tabpanel">
+                                <!--begin::Card-->
+                                <div class="card mb-6 mb-xl-9">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-lg-6 py-2">
+                                            <label class="required fs-5 fw-bold form-label">Service
+                                                Name</label>
+                                            <input class="form-control form-control-solid" type="text" id="gen_service_name" name="gen_service_name" fields="" />
+                                        </div>
+                                        <div class="col-sm-12 col-lg-6 py-2">
+                                            <label class="required fs-5 fw-bold form-label">Service Short
+                                                Name</label>
+                                            <input class="form-control form-control-solid" type="text" id="gen_service_short_name" name="gen_service_short_name" fields="" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col py-2">
+                                            <label class="required fs-5 fw-bold form-label">Base
+                                                State</label>
+                                            <select class="form-select form-control form-control-solid" aria-label="Select example" id="gen_base_state" name="gen_base_state" fields="">
+                                                <option value="states of nigeria">states of nigeria</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end::Card-->
+                            </div>
+                            <!--end:::Tab pane-->
+                            <!--begin:::Tab pane-->
+                            <div class="tab-pane fade" id="kt_user_view_overview_security" role="tabpanel">
+                                <!--begin::Card-->
+                                <div class="card mb-6 mb-xl-9">
+                                    <div class="px-2 pt-0 pb-5">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-lg-6 py-2">
+                                                <label class="required fs-5 fw-bold form-label">Electronic
+                                                    Payments</label>
+                                                <select class="form-select form-control form-control-solid" aria-label="Select example" id=" enable_electronic_payments" name=" enable_electronic_payments" fields="">
+                                                    <option value=""></option>
+                                                    <option label="Disable" value="false">false</option>
+                                                    <option label="Enable" value="true">true</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6 py-2">
+                                                <label class="required fs-5 fw-bold form-label">Payment
+                                                    Mode</label>
+                                                <select class="form-select form-control form-control-solid" aria-label="Select example" id=" ps_payment_mode" name=" ps_payment_mode" fields="">
+                                                    <option value=""></option>
+                                                    <option label="Demo" value="DEMO">DEMO</option>
+                                                    <option label="Live" value="LIVE">LIVE</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+
+                                        <!--end::Card body-->
+                                    </div>
+                                    <!--end::Card-->
+                                </div>
+                            </div>
+                            <!--end:::Tab pane-->
+                        </div>
+
+                        <!--end:::Tab content-->
+                    </div>
+                </form>
+                <div class="col">
+                    <button id="" onclick="" type="button" class="btn btn-sm btn-primary">
+                        <i class="bi bi-check2 fs-4 me-1"></i>
+                        Save
+                    </button>
+                </div>
+            </div>
+            <!--end::Col-->
+        </div>
+
+        <!--end::Row-->
+    </div>
+    <!--end::Container-->
+</div>
+<!--end::Content-->
+
+<script src="assets/plugins/global/plugins.bundle.js"></script>
+<script src="assets/js/scripts.bundle.js"></script>
+
+<script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+
+<script src="../../landing/assets/js/fingerprint.min.js"></script>
+<script src="../../landing/assets/js/common.js"></script>
+<script src="../../landing/assets/js/jQryfile.js"></script>
+<script src="../../dashboard/dist/assets/js/dashboard.js"></script>
+<script src="assets/js/menu.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script src="assets/plugins/global/plugins.bundle.js"></script>
+<script src="assets/js/scripts.bundle.js"></script>
+
+<script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+
+<script src="../../landing/assets/js/fingerprint.min.js"></script>
+<script src="../../landing/assets/js/common.js"></script>
+<script src="../../landing/assets/js/jQryfile.js"></script>
+<script src="../../dashboard/dist/assets/js/dashboard.js"></script>
+<script src="assets/js/menu.js"></script>
+<script src="assets/js/main.js"></script>
+
+
+
+
+<!--end::Javascript-->
+</body>
+<!--end::Body-->
+
+</html>
+<!--end::Post-->
+<!-- <script>
+    $(document).ready(function(){
+        $(".form-select").select2();
+        $("#courseDiv").hide();
+        $("#noCourseDiv").show();
+    });
+    coursesList();
+    
+    // Edit a course
+    function editCourses(course) {
+        // blockUI.block();
+        setItem("course_id", course);
+        showAjax("", "add_course.html", "page_content");
+    } 
+
+    // Delete a course
+//     function deleterecord(actid, btn) {
+//         Swal.fire({
+//             title: "ITA Portal",
+//             text: "Are you sure you want to delete this record?",
+//             icon: "warning",
+//             showCancelButton: true,
+//             confirmButtonText: "Yes Delete!",
+//             customClass: {
+//                 confirmButton: "btn btn-sm btn-primary",
+//                 cancelButton: "btn btn-sm btn-danger",
+//             },
+//         }).then((result) => {
+//             if (result.value) {
+//                 blockUI.block();
+//                 return dopost({
+//                     type: "POST",
+//                     url: api_link + "route/courses.php",
+//                     data: {
+//                         userid: getItem("userid"),
+//                         sessionid: getItem("sessionid"),
+//                         action: "delete_course",
+//                         course_code: actid,
+//                     },
+//                     success: function(response) {
+//                         try {
+//                             blockUI.release();
+//                             var trow = $(btn).closest("tr");
+//                             var json = JSON.parse(response);
+//                             if (json.statuscode == 0) {
+//                                 $.unblockUI("hide");
+//                                 trow.fadeOut(400, function(trow) {
+//                                     $('#courses_table').row(trow).remove().draw();
+//                                 });
+//                                 Swal.fire({
+//                                     title: "ITA Portal",
+//                                     html: json.status,
+//                                     icon: "success",
+//                                     buttonsStyling: false,
+//                                     confirmButtonText: "Ok, got it!",
+//                                     customClass: { confirmButton: "btn btn-sm btn-primary" },
+//                                 });
+//                                 // $('#courses_table').DataTable().ajax.reload();
+//                             } else {
+//                                 Swal.fire({
+//                                     title: "ITA Portal",
+//                                     html: json.status,
+//                                     icon: "error",
+//                                     buttonsStyling: false,
+//                                     confirmButtonText: "Ok, got it!",
+//                                     customClass: { confirmButton: "btn btn-sm btn-primary" },
+//                                 });
+//                                 blockUI.release();
+//                             }
+//                         } catch (e) {
+//                             console.error(e.message);
+//                         }
+//                     },
+//                 });
+//             } else if (result.dismiss === "cancel") {
+//                 Swal.fire({
+//                     title: "ITA Portal",
+//                     text: "Your delete was cancelled :)",
+//                     icon: "error",
+//                     buttonsStyling: false,
+//                     confirmButtonText: "Ok, got it!",
+//                     customClass: { confirmButton: "btn btn-sm btn-primary" },
+//                 });
+//             }
+//         });
+//     }
+
+
+// </script>

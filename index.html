@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>ITA</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="Learn the latest technologies and master in-demand skills in a hands-on, learning environment led by expert instructors.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="landing/assets/images/favicon.png">
+
+    <!-- CSS
+	============================================ -->
+
+    <!-- Vendor CSS (Bootstrap & Icon Font) -->
+    <!-- <link rel="stylesheet" href="landing/assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="landing/assets/css/vendor/font-awesome-pro.min.css">
+    <link rel="stylesheet" href="landing/assets/css/vendor/font-gilroy.css"> -->
+
+    <!-- Plugins CSS (All Plugins Files) -->
+    <!-- <link rel="stylesheet" href="landing/assets/css/plugins/select2.min.css">
+    <link rel="stylesheet" href="landing/assets/css/plugins/perfect-scrollbar.css">
+    <link rel="stylesheet" href="landing/assets/css/plugins/swiper.min.css">
+    <link rel="stylesheet" href="landing/assets/css/plugins/nice-select.css">
+    <link rel="stylesheet" href="landing/assets/css/plugins/ion.rangeSlider.min.css">
+    <link rel="stylesheet" href="landing/assets/css/plugins/photoswipe.css">
+    <link rel="stylesheet" href="landing/assets/css/plugins/photoswipe-default-skin.css">
+    <link rel="stylesheet" href="landing/assets/css/plugins/magnific-popup.css">
+    <link rel="stylesheet" href="landing/assets/css/plugins/slick.css"> -->
+
+    <!-- Main Style CSS -->
+    <!-- <link rel="stylesheet" href="landing/assets/css/style.css"> -->
+
+    <!-- Use the minified version files listed below for better performance and remove the files listed above -->
+    <link rel="stylesheet" href="landing/assets/css/vendor/vendor.min.css">
+    <link rel="stylesheet" href="landing/assets/css/plugins/plugins.min.css">
+    <link rel="stylesheet" href="landing/assets/css/style.min.css">
+    <style>
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+            #bgImg {
+                height: 190px !important;
+            }
+        }
+        @media only screen and (max-width: 765px) {
+            #bgImg {
+                height: 145px !important;
+            }
+        }
+        input[type="text"]:focus, input[type="url"]:focus {
+            border-color: #86b7fe !important;
+        }
+        .form-control:focus {
+            box-shadow: none;
+        }
+        .header-login a:hover, a:hover {
+            color: #0066FF;
+        }
+        .course .thumbnail .badge::before {
+            border-top: 19px solid #06F;
+            border-bottom: 19px solid #06F;
+        }
+        .course .thumbnail .badge {
+            background: #06F;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="page">
+        <!-- Header Section Start -->
+        <div class="header-section header-shadow sticky-header section">
+            <div class="header-inner">
+                <div class="container position-relative">
+                    <div class="row justify-content-between align-items-center">
+
+                        <!-- Header Logo Start -->
+                        <div class="col-xl-3 col-auto">
+                            <div class="header-logo">
+                                <a href="index.html">
+                                    <img class="dark-logo" src="landing/assets/images/logo.png" alt="ITA Logo">
+                                    <!-- <img class="dark-logo" src="landing/assets/images/logo/dark-logo.png" alt="Learts Logo">
+                                    <img class="light-logo" src="landing/assets/images/logo/light-logo.png" alt="Learts Logo"> -->
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Header Logo End -->
+
+                        <!-- Header Main Menu Start -->
+                        <div class="col d-none d-xl-block position-static">
+                            <nav class="site-main-menu menu-hover-1">
+                                <ul>
+                                    <li>
+                                        <a href="#" onclick="showAjax('', 'courses.html', 'page_content')">
+                                            <span class="menu-text">Courses</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onclick="showAjax('', 'about.html', 'page_content')">
+                                            <span class="menu-text">About</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onclick="showAjax('', 'faq.html', 'page_content')">
+                                            <span class="menu-text">FAQ</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- Header Main Menu End -->
+
+                        <!-- Header Right Start -->
+                        <div class="col-xl-3 col-auto">
+                            <div class="header-right">
+                                <div class="inner">
+
+                                    <!-- Header Login Start -->
+                                    <div class="header-login">
+                                        <a href="login.html">
+                                            <span class="menu-text">Sign in</span>
+                                        </a>
+                                    </div>
+                                    <div class="row px-lg-3 px-2">
+                                        <a href="signup.html"  class="btn btn-primary text-white" >
+                                            <span class="menu-text">Sign up</span>
+                                        </a>
+                                    </div>
+                                    <!-- Header Login End -->
+
+                                    <!-- Header Search Start -->
+                                    <!-- <div class="header-search">
+                                        <button class="header-search-toggle"><i class="far fa-search"></i></button>
+                                        <div class="header-search-form">
+                                            <form action="#">
+                                                <input type="text" placeholder="Search...">
+                                                <button><i class="fas fa-search"></i></button>
+                                            </form>
+                                        </div>
+                                    </div> -->
+                                    <!-- Header Search End -->
+
+
+                                    <!-- Header Mobile Menu Toggle Start -->
+                                    <div class="header-mobile-menu-toggle d-xl-none ml-sm-2">
+                                        <button class="toggle">
+                                            <i class="icon-top"></i>
+                                            <i class="icon-middle"></i>
+                                            <i class="icon-bottom"></i>
+                                        </button>
+                                    </div>
+                                    <!-- Header Mobile Menu Toggle End -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Header Right End -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header Section End -->
+
+        <div id="page_content">
+            <!-- Slider/Intro Section Start -->
+            <div class="intro2-section section">
+                <div class="container pb-5 pt-3">
+                    <div class="row row-cols-lg-2 row-cols-1 max-mb-n30">
+                        <!-- Intro One Content Start -->
+                        <div class="col align-self-center max-mb-30" data-aos="fade-up">
+                            <div class="intro2-content text-center text-md-start">
+                                <h2 class="title">Learn In-Demand Digital skills  </h2>
+                                <div class="desc">
+                                    <p>Learn the latest technologies and master in-demand skills in a hands-on, learning environment led by expert instructors.</p>
+                                </div>
+                                <div class="d-flex mt-3">
+                                    <a class="pe-3 text-primary" href="#"> <img src="landing/assets/images/vector1.png" class="" alt=""> Affordable fee </a>
+                                    <a class="text-warning" href="#"> <img src="landing/assets/images/vector2.png" class="" alt=""> Hybrid learning </a>
+                                </div>
+                                <div class="d-flex mt-5">
+                                    <input type="text" class="form-control w-md-50 me-2" placeholder="Enter your email to begin">
+                                    <a href="#" class="btn btn-primary w-md-25 mt-0">Get Started</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Intro One Content End -->
+    
+                        <!-- Intro One Course Start -->
+                        <div class="col max-mb-40 max-mt-20 " data-aos="fade-up">
+                            <div class="intro2-image row g-2 mb-2">
+                                <img src="landing/assets/images/intro1.png" class="w-25" alt="">
+                                <img src="landing/assets/images/intro2.png" class="w-25" alt="">
+                                <img src="landing/assets/images/intro3.png" class="w-25" alt="">
+                                <img src="landing/assets/images/intro4.png" class="w-25" alt="">
+                            </div>
+                            <div class="intro2-image row g-2">
+                                <img src="landing/assets/images/intro5.png" class="w-50" alt="">
+                                <img src="landing/assets/images/intro6.png" class="w-50" alt="">
+                            </div>
+                        </div>
+                        <!-- Intro One Course End -->
+                    </div>
+                </div>
+            </div>
+            <!-- Slider/Intro Section End -->
+    
+            <!-- Brand Section Start -->
+            <div class="brand-section section section-padding">
+                <div class="container">
+                    <div class="row">
+                        <h2 class="title col-md-12">Explore ITA</h2>
+                        <div class="col-md-7 col-lg-5">
+                            <span class="sub-title">Your career starts here. Explore our courses and find the one that's right for you. </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="d-flex align-items-end mt-5" id="bgImg" style="background-image: url('landing/assets/images/bgimg.png'); background-size: contain; background-repeat: no-repeat; height: 310px;">
+                            <div class="col d-flex justify-content-between px-lg-5 px-3 pb-lg-5 align-items-center">
+                                <h1 class="text-white">ICT Competence And Digital <br> Lifestyle Students</h1>
+                                <a href="#" class="btn btn-primary" onclick="showAjax('', 'enroll.html', 'page_content')">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Brand Section End -->
+    
+            <!-- Course Section Start -->
+            <div class="section section-padding">
+                <div class="container">
+    
+                    <!-- Section Title Start -->
+                    <div class="section-title" data-aos="fade-up">
+                        <h2 class="title">Browse ITA Courses</h2>
+                    </div>
+                    <!-- Section Title End -->
+    
+                    <!-- Course Wrapper Start -->
+                    <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1 max-mb-n30">
+    
+                        <!-- Course Start -->
+                        <div class="col max-mb-30" data-aos="fade-up">
+                            <div class="course">
+                                <div class="thumbnail">
+                                    <a href="enroll.html" class="image m-2">
+                                        <img src="landing/assets/images/course-1.png" alt="Course Image">
+                                    </a>
+                                </div>
+                                <div class="info p-3">
+                                    <h5 class="h6">
+                                        <a href="enroll.html">ICT Competency and...</a>
+                                    </h5>
+                                    <ul class="meta my-2">
+                                        <li><i class="far fa-school"></i>Rivers State University</li>
+                                        <li><i class="far fa-clock"></i>On-going</li>
+                                    </ul>
+                                    <h6 class="mb-0">₦20,000<span>.00</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Course End -->
+    
+                        <!-- Course Start -->
+                        <div class="col max-mb-30" data-aos="fade-up">
+                            <div class="course">
+                                <div class="thumbnail">
+                                    <span class="badge">Free</span>
+                                    <a href="enroll.html" class="image m-2">
+                                        <img src="landing/assets/images/course-2.png" alt="Course Image">
+                                    </a>
+                                </div>
+                                <div class="info p-3">
+                                    <h5 class="h6">
+                                        <a href="enroll.html">UI/UX Design</a>
+                                    </h5>
+                                    <ul class="meta my-2">
+                                        <li><i class="far fa-school"></i>Rivers State University</li>
+                                        <li><i class="far fa-clock"></i>On-going</li>
+                                    </ul>
+                                    <h6 class="mb-0">₦20,000<span>.00</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Course End -->
+    
+                        <!-- Course Start -->
+                        <div class="col max-mb-30" data-aos="fade-up">
+                            <div class="course">
+                                <div class="thumbnail">
+                                    <a href="enroll.html" class="image m-2"><img src="landing/assets/images/course-3.png" alt="Course Image"></a>
+                                </div>
+                                <div class="info p-3">
+                                    <h5 class="h6">
+                                        <a href="enroll.html">Graphics Design</a>
+                                    </h5>
+                                    <ul class="meta my-2">
+                                        <li><i class="far fa-school"></i>Rivers State University</li>
+                                        <li><i class="far fa-clock"></i>On-going</li>
+                                    </ul>
+                                    <h6 class="mb-0">₦20,000<span>.00</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Course End -->
+    
+                        <!-- Course Start -->
+                        <div class="col max-mb-30" data-aos="fade-up">
+                            <div class="course">
+                                <div class="thumbnail">
+                                    <a href="enroll.html" class="image m-2"><img src="landing/assets/images/course-4.png" alt="Course Image"></a>
+                                </div>
+                                <div class="info p-3">
+                                    <h5 class="h6">
+                                        <a href="enroll.html">3D Animation</a>
+                                    </h5>
+                                    <ul class="meta my-2">
+                                        <li><i class="far fa-school"></i>Rivers State University</li>
+                                        <li><i class="far fa-clock"></i>On-going</li>
+                                    </ul>
+                                    <h6 class="mb-0">₦20,000<span>.00</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Course End -->
+    
+                        <!-- Course Start -->
+                        <div class="col max-mb-30" data-aos="fade-up">
+                            <div class="course">
+                                <div class="thumbnail">
+                                    <a href="enroll.html" class="image m-2"><img src="landing/assets/images/course-3.png" alt="Course Image"></a>
+                                </div>
+                                <div class="info p-3">
+                                    <h5 class="h6">
+                                        <a href="enroll.html">Block Chain</a>
+                                    </h5>
+                                    <ul class="meta my-2">
+                                        <li><i class="far fa-school"></i>Rivers State University</li>
+                                        <li><i class="far fa-clock"></i>On-going</li>
+                                    </ul>
+                                    <h6 class="mb-0">₦20,000<span>.00</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Course End -->
+    
+                        <!-- Course Start -->
+                        <div class="col max-mb-30" data-aos="fade-up">
+                            <div class="course">
+                                <div class="thumbnail">
+                                    <a href="enroll.html" class="image m-2"><img src="landing/assets/images/course-2.png" alt="Course Image"></a>
+                                </div>
+                                <div class="info p-3">
+                                    <h5 class="h6">
+                                        <a href="enroll.html">Game Development</a>
+                                    </h5>
+                                    <ul class="meta my-2">
+                                        <li><i class="far fa-school"></i>Rivers State University</li>
+                                        <li><i class="far fa-clock"></i>On-going</li>
+                                    </ul>
+                                    <h6 class="mb-0">₦20,000<span>.00</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Course End -->
+    
+                        <!-- Course Start -->
+                        <div class="col max-mb-30" data-aos="fade-up">
+                            <div class="course">
+                                <div class="thumbnail">
+                                    <a href="enroll.html" class="image m-2"><img src="landing/assets/images/course-1.png" alt="Course Image"></a>
+                                </div>
+                                <div class="info p-3">
+                                    <h5 class="h6">
+                                        <a href="enroll.html">Database Management</a>
+                                    </h5>
+                                    <ul class="meta my-2">
+                                        <li><i class="far fa-school"></i>Rivers State University</li>
+                                        <li><i class="far fa-clock"></i>On-going</li>
+                                    </ul>
+                                    <h6 class="mb-0">₦20,000<span>.00</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Course End -->
+    
+                        <!-- Course Start -->
+                        <div class="col max-mb-30" data-aos="fade-up">
+                            <div class="course">
+                                <div class="thumbnail">
+                                    <a href="enroll.html" class="image m-2"><img src="landing/assets/images/course-4.png" alt="Course Image"></a>
+                                </div>
+                                <div class="info p-3">
+                                    <h5 class="h6">
+                                        <a href="enroll.html">WordPress Design</a>
+                                    </h5>
+                                    <ul class="meta my-2">
+                                        <li><i class="far fa-school"></i>Rivers State University</li>
+                                        <li><i class="far fa-clock"></i>On-going</li>
+                                    </ul>
+                                    <h6 class="mb-0">₦20,000<span>.00</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Course End -->
+    
+                    </div>
+                    <!-- Course Wrapper End -->
+                </div>
+            </div>
+            <!-- Course Section End -->
+    
+            <!-- Why Join Section Start -->
+            <div class="section section-padding">
+                <div class="container">
+    
+                    <!-- Section Title Start -->
+                    <div class="section-title text-center" data-aos="fade-up">
+                        <h2 class="title">Why Join ITA</h2>
+                        <span class="sub-title">Your career starts here. Explore our courses and find the one that's right for you.</span>
+                    </div>
+                    <!-- Section Title End -->
+    
+                    <!-- Courses Wrapper Start -->
+                    <div class="row row-cols-lg-3 row-cols-1 max-mb-n30 pb-5">
+    
+                        <!-- Course Start -->
+                        <div class="col max-mb-30" data-aos="fade-up">
+                            <div class="course-3" style="border-left: 2px solid #FE5050; border-radius: 0;">
+                                <div class="info">
+                                    <h3 class="title"><a href="#">Expert teachers</a></h3>
+                                    <span class="meta"> Expert teachers and staff at ITA provide unparalleled support </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Course End -->
+    
+                        <!-- Course Start -->
+                        <div class="col max-mb-30" data-aos="fade-up">
+                            <div class="course-3" style="border-left: 2px solid #0066FF; border-radius: 0;">
+                                <div class="info">
+                                    <h3 class="title"><a href="#"> Verifiable certifications</a></h3>
+                                    <span class="meta"> Recieve a verifiable certificate at the end of your course </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Course End -->
+    
+                        <!-- Course Start -->
+                        <div class="col max-mb-30" data-aos="fade-up">
+                            <div class="course-3" style="border-left: 2px solid #38C976; border-radius: 0;">
+                                <div class="info">
+                                    <h3 class="title"><a href="#"> Hybrid learning</a></h3>
+                                    <span class="meta"> Formal classroom learning designed to help students reach their career goals. </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Course End -->
+    
+                        <!-- Course Start -->
+                        <div class="col max-mb-30" data-aos="fade-up">
+                            <div class="course-3" style="border-left: 2px solid #F79E1B; border-radius: 0;">
+                                <div class="info">
+                                    <h3 class="title"><a href="#"> Up-to-date materials</a></h3>
+                                    <span class="meta"> Stay relevant with up to date learning curriculum and resources </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Course End -->
+    
+                        <!-- Course Start -->
+                        <div class="col max-mb-30" data-aos="fade-up">
+                            <div class="course-3" style="border-left: 2px solid #6B00F5; border-radius: 0;">
+                                <div class="info">
+                                    <h3 class="title"><a href="#"> Stay relevant with up to date learning curriculum and resources</a></h3>
+                                    <span class="meta"> Affordable fee structure so you can get the education you deserve without breaking the bank. </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Course End -->
+    
+                        <!-- Course Start -->
+                        <div class="col max-mb-30" data-aos="fade-up">
+                            <div class="course-3" style="border-left: 2px solid #FF6DAB; border-radius: 0;">
+                                <div class="info">
+                                    <h3 class="title"><a href="#"> What is spreuke</a></h3>
+                                    <span class="meta"> Spreuke is a tool for developers to easily build and deploy </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Course End -->
+    
+    
+                    </div>
+                    <!-- Courses Wrapper End -->
+    
+                    <div class="row mt-5 pt-5">
+                        <div class="col-lg-4 d-lg-block d-none">
+                            <div class="d-flex justify-content-end py-5">
+                                <img src="landing/assets/images/ita2.png" alt="">
+                            </div>
+                            <div class="d-flex justify-content-center py-5">
+                                <img src="landing/assets/images/ita1.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="d-flex justify-content-center pb-5">
+                                <img src="landing/assets/images/ita3.png" alt="">
+                            </div>
+                            <div class="mt-5 text-center mt-5">
+                                <h2 class="title">Join 2500+ Students <br> Using ITA To Upskill</h2>
+                                <div class="d-flex mt-3 justify-content-center">
+                                    <a class="pe-3 text-primary" href="#"> <img src="landing/assets/images/vector1.png" class="" alt=""> Affordable fee </a>
+                                    <a class="text-warning" href="#"> <img src="landing/assets/images/vector2.png" class="" alt=""> Hybrid learning </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 d-lg-block d-none">
+                            <div class="d-flex py-5">
+                                <img src="landing/assets/images/ita4.png" alt="">
+                            </div>
+                            <div class="d-flex justify-content-center py-5">
+                                <img src="landing/assets/images/ita5.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+            <!-- Why Join Section End -->
+    
+            <!-- Student Stories Start -->
+            <div class="section section-padding">
+                <div class="container" style="background: url(landing/assets/images/wave.png); background-repeat: no-repeat; background-position: center bottom;">
+                    
+                    <div class="row">
+                        <div class="col-lg-11 mx-auto row mx-0 justify-content-between">
+                            <div class="col-lg-4 d-flex align-items-end">
+                                <div class="row max-mb-n30">
+                                    <div class="testimonial-two testimonial-three" data-bg-color="#fff" style="margin-bottom: 85px; border-radius: 30px;">
+                                        <div class="content">
+                                            <h6 class="title">Easy to use</h6>
+                                            <p>One thing I love about eCampus app is that, it has simple learning curve, in no time any student can be up and about with the app. Well done #TeameCampus.</p>
+                                        </div>
+                                        <div class="author-info">
+                                            <div class="image">
+                                                <img src="landing/assets/images/test-1.png" alt="" style="border-radius: 0%;">
+                                            </div>
+                                            <div class="cite">
+                                                <p class="text-primary font-weight-bold" style="font-size: 16px">Fredrick Chibuzor</p>
+                                                <span class="position" style="font-size: 12px;">100 level, Mechanical Dept.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-lg-7">
+                                <div class="row max-mb-n30">
+                                    <div class="testimonial-two testimonial-three" data-bg-color="#fff" style="margin-bottom: 85px; border-radius: 30px;">
+                                        <div class="content">
+                                            <h6 class="title">Great platform</h6>
+                                            <p>Everything is so easy! How do I begin to describe eCampus? It makes everything so easy - I don’t have to rush to school to check my results or wait for a long time before I get an accomodation - just a lovely platform!</p>
+                                        </div>
+                                        <div class="author-info">
+                                            <div class="image">
+                                                <img src="landing/assets/images/test-2.png" alt="" style="border-radius: 0%;">
+                                            </div>
+                                            <div class="cite">
+                                                <p class="text-primary font-weight-bold" style="font-size: 16px">Helen Okereke </p>
+                                                <span class="position" style="font-size: 12px;">Final year student, Accountancy.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="testimonial-two testimonial-three" data-bg-color="#fff" style="border-radius: 30px;">
+                                        <div class="content">
+                                            <h6 class="title">On the go!</h6>
+                                            <p>Lols...it’s so amazing, I can quickly register my courses, pay fees and do so much more anytime and anywhere. I am pretty sure they are working on a mobile app</p>
+                                        </div>
+                                        <div class="author-info">
+                                            <div class="image">
+                                                <img src="landing/assets/images/test-3.png" alt="" style="border-radius: 0%;">
+                                            </div>
+                                            <div class="cite">
+                                                <p class="text-primary font-weight-bold" style="font-size: 16px">Barine Zorle </p>
+                                                <span class="position" style="font-size: 12px;">300 level, Computer Science</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Student Stories End -->
+    
+            <!-- Faq Section Start -->
+            <div class="faq-section section section-padding">
+                <div class="container">
+                    <!-- Section Title Start -->
+                    <div class="section-title text-center" data-aos="fade-up">
+                        <h2 class="title">FAQ</h2>
+                        <span class="sub-title">Frequently Asked Questions.</span>
+                    </div>
+                    <!-- Section Title End -->
+                    <div class="row">
+                        <!-- Start Single Accordion -->
+                        <div class="col-lg-6">
+                            <div class="mx-accordion max-mb-n30 mb-sm-30 mb-xs-30" id="accordionExample">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h5 class="mb-0">
+                                            <a href="#" class="acc-btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                How to register online?
+                                            </a>
+                                        </h5>
+                                    </div>
+    
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="card-body">Enrolling in an online class is easy. At MaxCoach, we serve several categories of online learners. Select the student category that you identify with to get started.
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                        <h5 class="mb-0">
+                                            <a href="#" class="acc-btn collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                How do I customize my account?
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                        <div class="card-body">In order to customize your account’s information, just log in with the provided passcode and change the info.
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="card">
+                                    <div class="card-header" id="headingThree">
+                                        <h5 class="mb-0">
+                                            <a href="#" class="acc-btn collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                How do you process my information?
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                        <div class="card-body">Your data will be kept private and secure on our database. No illegal use without prior notice.
+                                        </div>
+                                    </div>
+                                </div>
+    
+                            </div>
+                        </div>
+                        <!-- End Single Accordion -->
+    
+                        <!-- Start Single Accordion -->
+                        <div class="col-lg-6">
+                            <div class="mx-accordion max-mb-n30" id="accordionExample2">
+                                <div class="card">
+                                    <div class="card-header" id="headingfour">
+                                        <h5 class="mb-0">
+                                            <a href="#" class="acc-btn" data-toggle="collapse" data-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                                                How do I contact support?
+                                            </a>
+                                        </h5>
+                                    </div>
+    
+                                    <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordionExample2">
+                                        <div class="card-body">You can contact our help center or any contact method (phone call, email or appear at our office) to get help. </div>
+                                    </div>
+                                </div>
+    
+                                <div class="card">
+                                    <div class="card-header" id="headingfive">
+                                        <h5 class="mb-0">
+                                            <a href="#" class="acc-btn collapsed" data-toggle="collapse" data-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
+                                                How to cancel my membership?
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapsefive" class="collapse" aria-labelledby="headingfive" data-parent="#accordionExample2">
+                                        <div class="card-body">You just need to submit a membership termination request, we’ll proceed within 24 hours.
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="card">
+                                    <div class="card-header" id="headingsix">
+                                        <h5 class="mb-0">
+                                            <a href="#" class="acc-btn collapsed" data-toggle="collapse" data-target="#collapsesix" aria-expanded="false" aria-controls="collapsesix">
+                                                How can I get a discount?
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapsesix" class="collapse" aria-labelledby="headingsix" data-parent="#accordionExample2">
+                                        <div class="card-body">Learners can get a discount by coupon or voucher. If you have one, fill in the code box before making any payment.
+                                        </div>
+                                    </div>
+                                </div>
+    
+                            </div>
+                        </div>
+                        <!-- End Single Accordion -->
+                    </div>
+                </div>
+            </div>
+            <!-- Faq Section End -->
+        </div>
+
+        <div class="footer-section section" style="background-color: #111; padding: 20px 0 30px;">
+            <div class="container">
+                <!-- Footer Copyright Start -->
+                <div class="row max-mt-20">
+                    <div class="col">
+                        <p class="copyright">&copy; 2022 Cinfores ITA. <a href="#">All Rights Reserved</a></p>
+                    </div>
+                </div>
+                <!-- Footer Copyright End -->
+            </div>
+        </div>
+
+        <!-- Scroll Top Start -->
+        <a href="#" class="scroll-top" id="scroll-top">
+            <i class="arrow-top fal fa-long-arrow-up"></i>
+            <i class="arrow-bottom fal fa-long-arrow-up"></i>
+        </a>
+        <!-- Scroll Top End -->
+    </div>
+
+    <div id="site-main-mobile-menu" class="site-main-mobile-menu">
+        <div class="site-main-mobile-menu-inner">
+            <div class="mobile-menu-header">
+                <div class="mobile-menu-logo">
+                    <a href="index.html"><img src="landing/assets/images/logo.png" alt=""></a>
+                </div>
+                <div class="mobile-menu-close">
+                    <button class="toggle">
+                        <i class="icon-top"></i>
+                        <i class="icon-bottom"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="mobile-menu-content">
+                <nav class="site-mobile-menu">
+                    <ul>
+                        <li>
+                            <a href="#" onclick="showAjax('', 'courses.html', 'page_content')">
+                                <span class="menu-text">Courses</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="showAjax('', 'about.html', 'page_content')">
+                                <span class="menu-text">About</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="showAjax('', 'faq.html', 'page_content')">
+                                <span class="menu-text">FAQ</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="showAjax('', 'faq.html', 'page_content')">
+                                <span class="menu-text">Sign In</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="showAjax('', 'faq.html', 'page_content')">
+                                <span class="menu-text">Sign Up</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS
+============================================ -->
+
+    <!-- Vendors JS -->
+    <!-- <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+<script src="assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+<script src="assets/js/vendor/bootstrap.bundle.min.js"></script> -->
+
+    <!-- Plugins JS -->
+    <!-- <script src="assets/js/plugins/parallax.min.js"></script>
+<script src="assets/js/plugins/jquery.ajaxchimp.min.js"></script> -->
+
+    <!-- Use the minified version files listed below for better performance and remove the files listed above -->
+    <script src="landing/assets/js/vendor/vendor.min.js"></script>
+    <script src="landing/assets/js/plugins/plugins.min.js"></script>
+
+    <!-- Main Activation JS -->
+    <script src="landing/assets/js/main.js"></script>
+    <script src="landing/assets/js/common.js"></script>
+    <script src="landing/assets/js/fingerprint.min.js"></script>
+    <script src="landing/assets/js/jQryfile.js"></script>
+
+</body>
+
+</html>

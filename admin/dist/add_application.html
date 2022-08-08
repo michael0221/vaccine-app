@@ -1,0 +1,320 @@
+<!--begin::Post-->
+<div class="post d-flex flex-column-fluid" id="kt_post">
+    <!--begin::Container-->
+    <div id="kt_content_container" class="container-fluid">
+        <!--begin::Col-->
+        <div class="col-xl-12">
+            <!--begin::List Widget 3-->
+            <div class="card card-xxl-stretch mb-xl-3 shadow-none">
+                <div class="row gy-5 gx-xl-8">
+                    <div class="col-lg-12 ">
+                        <div class="d-flex fw-bolder flex-wrap align-items-center">
+                            <span>
+                                <a class="" href="javascript:void(0)" onclick="showAjax('','application.html','page_content')">
+                                    <i class="bi bi-arrow-left-circle text-gray-800 me-5 fs-2x"></i>
+                                </a>
+                            </span>
+                            <h4 class="fs-2qx mb-0" id="form_header">Add New Application</h4>
+                            <span class="text-muted px-0 fs-6 fw-bold col-md-10 col-12 mt-1">Easily set up your applications </span>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+            <!--end:List Widget 3-->
+        </div>
+        <!--end::Col-->
+    
+        <!--begin::Wrapper-->
+        <div class="col-xl-12 mb-3">
+            <!--begin::Form-->
+            <form class="form" id="create_appl">
+                <div class="row">
+                    <div class="row g-7">
+                        <div class="col-md-4">
+                            <label for="appl_name" class="form-label">Application Name</label>
+                            <input type="text" class="form-control form-control-solid inp" name="appl_name" fields="appl_name" placeholder="Application Name">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="appl_type" class="form-label"> Application Type</label>
+                            <select class="form-select form-select-solid inp" data-control="select2" data-hide-search="true" id="appl_type" fields="appl_type">
+                                <option value="">Select Type</option>
+                                <option value="Student">Student</option>
+                                <option value="Lecturer">Lecturer</option>
+                                <option value="non_rsust">Non-RSUST Candidate</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="course_code" class="form-label"> Course</label>
+                            <select class="form-select form-select-solid inp" data-control="select2" data-hide-search="true" id="course_code" fields="course_code"></select>
+                        </div>
+                    </div>
+    
+                    <div class="row g-7">
+                        
+                        <div class="col-md-4">
+                            <label for="amount" class="form-label"> Amount</label>
+                            <input type="text" class="form-control form-control-solid inp" name="amount" fields="amount" placeholder="Amount">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="appl_session" class="form-label"> Application Session</label>
+                            <select class="form-select form-select-solid inp" data-control="select2" data-hide-search="true" id="appl_session" fields="appl_session">
+                                <option value="">Select Session</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="appl_status" class="form-label"> Application Status</label>
+                            <select class="form-select form-select-solid inp" data-control="select2" data-hide-search="true" id="appl_status" fields="appl_status">
+                                <option value="">Select Status</option>
+                                <option value="Ongoing">Ongoing</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Closed">Closed</option>
+                                <option value="Open">Open</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row g-7">
+                        <div class="col-md-6">
+                            <label for="start_date" class="form-label">Start Date</label>
+                            <input type="date" class="form-control form-control-solid inp" name="start_date" fields="start_date">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="end_date" class="form-label">End Date</label>
+                            <input type="date" class="form-control form-control-solid inp" name="end_date" fields="end_date">
+                        </div>
+                    </div>
+    
+                    <div class="row g-7">
+                        <div class="col-md-12">
+                            <label for="course_desc" class="form-label">Upload Document </label>
+                            <!-- <textarea id="course_desc" name="course_desc" fields="course_desc" class="form-control form-control-solid inp" rows="2" placeholder="Type a description"></textarea> -->
+                        </div>
+                    </div>
+                    <div class="row g-7">
+                        <div class="col-md-12">
+                            <a class="btn btn-primary" onclick="addApplications()" id="form_button"><i class="bi bi-check-lg text-white"></i> Submit Application</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!--end::Form-->
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Container-->
+</div>
+
+<script>
+$(document).ready(function(){
+    $('.form-select').select2();
+    
+    $(".date").daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 1901,
+            maxYear: parseInt(moment().format("YYYY"),10)
+        }
+    );
+});
+
+getCourses().then(()=>{
+    populateDataFunctionsAppl();
+});
+
+// getCourses();
+function getCourses() {
+    blockUI.block();
+    return dopost({
+        type: "POST",
+        url: api_link + "route/courses.php",
+        data: {
+            userid: getItem("userid"),
+            sessionid: getItem("sessionid"),
+            action: "get_courses",
+        },
+        "success": function (response) {
+            try {
+                blockUI.release();
+                var json = JSON.parse(response);
+                var data = json.data;
+                if (json.statuscode == 0) {
+                    var strr = "";
+                    var cId = $("#course_code");
+                    cId.html("<option value=''>Select Category</option>")
+                    var x = "";
+                    $.each(json.data, function(key, val) {
+                        var option = $("<option/>");
+                        option.val(val.course_code);
+                        option.text(val.course_title);
+                        // option.attr("amount", val.amount);
+                        cId.append(option);
+                    });
+                    cId.select2({ tags: true });
+                }
+
+            } catch (e) {
+                console.error(e.status);
+            }
+        },
+        // "error": loadingerr
+    });
+}
+
+// Add courses
+function addApplications() {
+    blockUI.block();
+    var form = $("#create_appl");
+    var formData = readFormData($("#create_appl"), true).data;
+    if (form.length > 0) {
+        return dopost({
+            type: "POST",
+            url: api_link + "route/applconfig.php",
+            data: {
+                userid: getItem("userid"),
+                sessionid: getItem("sessionid"),
+                datafields: formData,
+                action: "create_appl_config",
+            },
+            success: (response) => {
+                try {
+                    blockUI.release();
+                    var json = JSON.parse(response);
+                    if (json.statuscode == 0) {
+                        Swal.fire({
+                            title: "ITA Portal",
+                            html: json.status,
+                            icon: "success",
+                            buttonsStyling: false,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: { confirmButton: "btn btn-primary" },
+                        });
+                        showAjax("", "application.html", "page_content");
+                    } else {
+                        Swal.fire({
+                            title: "ITA Portal",
+                            html: json.status,
+                            icon: "error",
+                            buttonsStyling: false,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: { confirmButton: "btn btn-primary" },
+                        });
+                        blockUI.release();
+                    }
+                } catch (e) {
+                    console.error(e.stack);
+                }
+            },
+        });
+    }
+}
+
+// Update application
+function updateApplication(applCode) {
+    blockUI.block();
+    var formData = readFormData($("#create_appl"), true).data;
+    if (form.length > 0) {
+        return dopost({
+            url: api_link + "route/applconfig.php",
+            data: {
+                action: "update_appl_config",
+                userid: getItem("userid"),
+                sessionid: getItem("sessionid"),
+                appl_code: applCode
+            },
+            type: "POST",
+            success: function(response) {
+                success: (response) => {
+                    try {
+                        blockUI.release();
+                        var json = JSON.parse(response);
+                        if (json.statuscode == 0) {
+                            Swal.fire({
+                                title: "ITA Portal",
+                                html: json.status,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: { confirmButton: "btn btn-primary" },
+                            });
+                            showAjax("", "application.html", "page_content");
+                        } else {
+                            Swal.fire({
+                                title: "ITA Portal",
+                                html: json.status,
+                                icon: "error",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: { confirmButton: "btn btn-primary" },
+                            });
+                            blockUI.release();
+                        }
+                    } catch (e) {
+                        console.error(e.stack);
+                    }
+                }
+            }
+        });
+    }
+
+}
+
+function populateDataFunctionsAppl(action_name = "get_this_appl_config") {
+    var applCode = getItem('applCode');
+    if (applCode != "") {
+        $("#form_button").unbind("click");
+        $("#form_button").attr("onclick", "updateApplication('" + applCode + "')");
+        $("#form_button").html("Update Application");
+        $("#form_header").html("Update Application");
+
+        blockUI.block();
+        return dopost({
+            url: api_link + "/route/applconfig.php",
+            data: {
+                userid: getItem("userid"),
+                sessionid: getItem("sessionid"),
+                appl_code: getItem("applCode"),
+                action: action_name,
+            },
+            type: "POST",
+            success: function(response) {
+                try {
+                    var json = JSON.parse(response);
+                    var data = json.data;
+                    if (json.statuscode == 0) {
+                        blockUI.release();
+                        
+                        var form = $("#create_appl");
+                        if (form.length > 0) {
+                                form.find(".inp").each(function() {
+                                    try {
+                                        if (data.hasOwnProperty($(this).attr("fields"))) {
+                                            if (this.type == "select-one" || this.type == "select-many") {
+                                                var _id = $(this).attr("fields");
+                                                populateSelect(_id, data);
+                                            } else $(this).val(data[$(this).attr("fields")]);
+                                        }
+                                    } catch (e) {
+                                        console.log(e.message);
+                                    }
+                                });
+                        }
+                        blockUI.release();
+                    } else {
+                        console.log("No Data");
+                        blockUI.release();
+                    }
+                } catch (e) {
+                    console.error(e.stack);
+                    blockUI.release();
+                }
+            },
+            // "error": loadingerr
+        });
+    } else console.log("No data");
+    blockUI.release();
+}
+
+</script>

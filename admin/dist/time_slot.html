@@ -1,0 +1,211 @@
+<div class="post d-flex flex-column-fluid" id="kt_post">
+  <!--begin::Container-->
+  <div id="kt_content_container" class="container-xxl">
+    <div class="row">
+      <div class="col-lg-12 text-darkpurple">
+        <h4 class="fs-2qx text-dark mb-0">
+          <a href="#" onclick='showAjax("","batches.html","page_content")'>
+            <i class="bi bi-arrow-left-circle text-dark me-4 fs-2x"></i>
+          </a>
+          Add Time Slot
+        </h4>
+        <p class="fs-5 text-gray-600">Easily set up your applications</p>
+      </div>
+    </div>
+
+    <!--begin::Row-->
+    <div class="row">
+      <!--begin::Col-->
+
+      <!--end::Col-->
+      <!--begin::Add new card-->
+      <div class="col-md-6">
+        <!--begin::Card-->
+        <div class="card h-md-100 card-stretch">
+          <!--begin::Card body-->
+          <div class="card-body px-0">
+            <!--begin::Button-->
+            <form id="new_batch_form" class="form" action="#">
+              <!--begin::Heading-->
+              <div class="row mb-10">
+                <!--begin::Col-->
+                <div class="col-md-12">
+                  <!--begin::Label-->
+                  <label class="required fs-5 fw-bold mb-2 form-label">Batch Code</label>
+                  <!--end::Label-->
+                  <!--begin::Input-->
+                  <select class="form-select form-control form-control-solid w-100" aria-label="Select example"
+                    id="Batch Code" name="Batch Code" fields="Batch Code">
+
+                  </select>
+                  <!--end::Input-->
+                </div>
+                <!--end::Col-->
+
+                <!--begin::Input group-->
+              </div>
+              <div class="row mb-10">
+                <!--begin::Col-->
+                <div class="col-md-12">
+                  <!--end::Label-->
+                  <label class="required fs-5 fw-bold mb-2 form-label">Application Name</label>
+                  <!--end::Label-->
+                  <!--end::Input-->
+                  <input class="form-control form-control-solid" type="text" id="Application Name"
+                    name="ApplicationName" fields="ApplicationName" />
+                  <!--end::Input-->
+
+                  <!--end::Col-->
+                </div>
+                <!--end::Heading-->
+
+                <!--begin::Input group-->
+              </div>
+              <div class="row mb-10">
+                <!--begin::Col-->
+                <div class="col-md-12">
+                  <!--begin::Label-->
+                  <label class="required fs-5 fw-bold mb-2 form-label">Batch Days</label>
+                  <!--end::Label-->
+                  <!--end::Input-->
+                  <select class="form-select form-control form-control-solid w-100" aria-label="Select example"
+                    id="Batch Days" name="Batch Days" fields="Batch Days">
+                    <option></option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                  </select>
+                </div>
+                <!--end::Col-->
+
+                <!--begin::Input group-->
+              </div>
+              <div class="row mb-10">
+                <!--begin::Col-->
+                <div class="col-md-12">
+                  <!--end::Label-->
+                  <label class="required fs-5 fw-bold mb-2 form-label">Capacity</label>
+                  <!--end::Label-->
+                  <!--end::Input-->
+                  <input class="form-control form-control-solid" type="number" id="Capacity" name="Capacity"
+                    fields="Capacity" />
+                  <!--end::Input-->
+
+                  <!--end::Col-->
+                </div>
+                <!--end::Heading-->
+
+                <!--begin::Input group-->
+              </div>
+              <div class="row mb-10">
+                <!--begin::Col-->
+                <div class="col-md-12">
+                  <!--begin::Label-->
+                  <label class="required fs-5 fw-bold mb-2 form-label">Time From</label>
+                  <!--end::Label-->
+                  <!--end::Input-->
+                  <input class="form-control form-control-solid" id="Time From" type="time" name="Time From"
+                    fields="Time From" />
+                </div>
+                <!--end::Col-->
+
+                <!--begin::Input group-->
+              </div>
+
+              <div class="row mb-10">
+                <!--begin::Col-->
+                <div class="col-md-12">
+                  <!--begin::Label-->
+                  <label class="required fs-5 fw-bold mb-2 form-label">Time To</label>
+                  <!--end::Label-->
+                  <!--end::Input-->
+                  <input class="form-control form-control-solid" id="Time To" type="time" name="Time To"
+                    fields="Time To" />
+                </div>
+                <!--end::Col-->
+
+                <!--begin::Input group-->
+              </div>
+              <!--end::Actions-->
+              <button id="add_batch" onclick="" type="button" class="btn btn-primary">
+                <i class="bi bi-check2 fs-4 me-2"></i>
+                Add Time Slot
+              </button>
+            </form>
+            <!--begin::Button-->
+          </div>
+          <!--begin::Card body-->
+        </div>
+        <!--begin::Card-->
+      </div>
+      <div class="col-md-6">
+        <div class="card  card-stretch">
+          <!--begin::Card body-->
+          <div class="card-body px-0">
+            <h2 class="ms-2">Existing Batch Slot</h2>
+            <!--begin::Heading-->
+            <div id="notimeslotDiv">
+              <div class="text-center p-20" style="background: #F8F7F8;">
+
+                <p class="text-gray-800 px-0 fs-5 py-5 fw-bold">No existing batch slot</p>
+              </div>
+            </div>
+
+            <!--end::Heading-->
+          </div>
+          <!--begin::Card body-->
+        </div>
+        <div class="row" id="timeslotDiv">
+          <div class="col-lg-12">
+            <div class="card card-custom gutter-b">
+              <!--begin::Header-->
+              <div class="card-header border-0 pt-5 px-0 bg-transparent">
+                <h6 class="card-title align-items-start flex-column">
+                  <span class="card-label fw-bolder mb-1 text-dark">Existing Batch Slot</span>
+                </h6>
+              </div>
+              <div class="card-body px-0 pt-1">
+                <!--begin: Datatable-->
+                <div class="table-responsive">
+                  <table class="table table-row-bordered align-middle gy-5 gs-7 border rounded w-100"
+                    id="batches_table">
+                    <thead class="">
+                      <tr>
+                        <th class="min-w-50px">Batch Code</th>
+                        <th class="min-w-75px">Batch Days</th>
+                        <th class="min-w-70px">Time</th>
+                        <th class="min-w-50px">Capacity</th>
+                      </tr>
+
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                  </table>
+                </div>
+                <!--end: Datatable-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--begin::Add new card-->
+    </div>
+    <!--end::Row-->
+    <!--begin::Modals-->
+    <!--begin::Modal - Add role-->
+
+    <!--end::Modal - Update role-->
+    <!--end::Modals-->
+  </div>
+  <!--end::Container-->
+</div>
+
+<script>
+  $(document).ready(function () {
+    //  $(".form-select").select2();
+    $("#timeslotDiv").hide();
+    $("#notimeslotDiv").show();
+  });
+</script>
