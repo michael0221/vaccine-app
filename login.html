@@ -210,23 +210,24 @@
 									var ret = {
 										token: response.token,
 									};
-									window.location.href = "amin/dist/index.html" + "?" + $.param(ret);
+									window.location.href = "admin/dist/index.html" + "?" + $.param(ret);
 									// window.location.href = "admin/dist/index.html"
 									// console.log("michael")
 
 									// window.location.href = page + "?" + $.param(ret);
 								} else {
 									// $.unblockUI();
-									// callSweetMsg(json, "eCampus Portal", "error");
-									// Swal.fire({
-									// 	title: "ITA Portal",
-									// 	html: json.status,
-									// 	icon: "error",
-									// 	buttonsStyling: true,
-									// 	confirmButtonText: "Ok, got it!",
-									// 	customClass: { confirmButton: "btn-sm btn-primary" },
-									// });
-									// $("#sign_in_submit").html("Log in to dashboard");
+									// callSweetMsg(response, "Vaccine System", "error");
+									console.log("michael");
+									Swal.fire({
+										title: "Vaccine System",
+										html: response.message,
+										icon: "error",
+										buttonsStyling: true,
+										confirmButtonText: "Ok, got it!",
+										customClass: { confirmButton: "btn-sm btn-primary" },
+									});
+									$("#sign_in_submit").html("Log in to dashboard");
 								}
 							} catch (e) {
 								console.log(e.message);

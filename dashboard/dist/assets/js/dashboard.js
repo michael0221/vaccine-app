@@ -107,38 +107,36 @@ function goHome() {
 
 // GET DASHBOARD
 function getDashboard() {
-    setItem("userid", newQueryString("userid"));
-    setItem("sessionid", newQueryString("sessionid"));
+    setItem("token", newQueryString("token"));
+    // setItem("sessionid", newQueryString("sessionid"));
     blockUI.block();
 
-    return dopost({
-        url: api_link + "route/users.php",
+    return $.ajax({
+        url: "https://covid-vaccine-system.herokuapp.com/auth/user-details/",
         data: {
-            action: "getdashboard",
-            userid: newQueryString("userid"),
-            extra: "summary",
-            sessionid: newQueryString("sessionid"),
+            // userid: newQueryString("userid"),
+            token: newQueryString("token"),
+            // sessionid: newQueryString("sessionid"),
         },
         type: "POST",
         success: function(response) {
             try {
-                var json = JSON.parse(response);
+                // var json = JSON.parse(response);
                 blockUI.release();
-                if (json.statuscode == 0) {
-                    setItem("userid", json.data.userid);
-                    setItem("first_name", json.data.first_name);
-                    setItem("last_name", json.data.last_name);
-                    setItem("role", json.data.role);
-                    setItem("fullname", json.data.fullname);
-                    setItem("email", json.data.email);
-                    $(".fullname").html(json.data.fullname);
-                    $(".first_name").html(json.data.first_name);
-                    $(".email").html(json.data.email);
-                    var mnu = ecampusMenuCreator(json.data.menu)
-                    mnu.insertAfter($("#dashboard_link"));
+                if (response.status == 200) {
+                    console.log(response);
+                    setItem("token", response.token);
+                    setItem("first_name", response.first_name);
+                    setItem("last_name",  response.last_name);
+                    
+                    $("#staff_name").html(response.first_name);
+                    // $(".first_name").html(json.data.first_name);
+                    // $(".email").html(json.data.email);
+                    // var mnu = ecampusMenuCreator(json.data.menu)
+                    // mnu.insertAfter($("#dashboard_link"));
 
                 } else {
-                    logOut();
+                    // logOut();
                 }
             } catch (e) {
                 console.log(e.message);
