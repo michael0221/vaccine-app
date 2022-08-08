@@ -207,12 +207,11 @@
 								// console.log(json);
 								// var page = json.data.page;
 								if (response.status == 200) {
-									// var ret = {
-									// 	sessionid: json.data.sessionid,
-									// 	userid: json.data.userid,
-									// };
-									// window.location.href = "dashboard/dist/index.html" + "?" + $.param(ret);
-									window.location.href = "admin/dist/index.html"
+									var ret = {
+										token: response.token,
+									};
+									window.location.href = "amin/dist/index.html" + "?" + $.param(ret);
+									// window.location.href = "admin/dist/index.html"
 									// console.log("michael")
 
 									// window.location.href = page + "?" + $.param(ret);
