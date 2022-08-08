@@ -7720,7 +7720,7 @@ textarea:focus {
   max-width: 158px;
 }
 .header-logo a img {
-  width: 100%;
+  /* width: 100%; */
   padding: 15px 0;
 }
 .header-logo a img.light-logo {
