@@ -19,13 +19,16 @@
                         <div class="col-md-9 row">
                             <!--begin::Name-->
                             <div class="d-flex fw-bolder text-secondary flex-wrap col-md-8 col-12">
-                                <h4 class="fs-2qx text-dark mb-0">Batch Manager </h4>
-                                <span class="text-muted px-0 fs-6 fw-bold col-md-10 col-lg-12 mt-1">Easily set up your applications.</span>
+                                <h4 class="fs-2qx text-dark mb-0">Test Sample </h4>
+                                <span class="text-muted px-0 fs-6 fw-bold col-md-10 col-lg-12 mt-1">Test Uploaded
+                                    Sample</span>
                             </div>
                         </div>
-                        <div class="col-md-3 d-flex justify-content-end my-auto">
-                            <a class="btn btn-primary rounded-1" onclick="showAjax('', 'new_batch.html', 'page_content');"><i class="bi bi-plus-circle"></i> Add New Batch</a>
-                        </div>
+                        <!-- <div class="col-md-3 d-flex justify-content-end my-auto">
+                            <a class="btn btn-primary rounded-1"
+                                onclick="showAjax('', 'new_batch.html', 'page_content');"><i
+                                    class="bi bi-plus-circle"></i> Add New Batch</a>
+                        </div> -->
                     </div>
                     <!--end::Body-->
                 </div>
@@ -37,176 +40,255 @@
 
                 <div class="col-md-12 my-5" id="noBatchDiv">
                     <!--begin::Heading-->
-                    <div class="text-center p-20" style="background: #F8F7F8;">
-                        <img src="assets/media/empty.png" class="" alt="no batches" />
-                        <p class="text-gray-800 px-0 fs-5 py-5 fw-bold">No Batch to show yet. Add one</p>
+                    <div class=" d-flex flex-column justify-content-center align-items-center p-20"
+                        style="background: #F8F7F8;">
+                        <img src="assets/media/empty.png" width="50" class="" alt="no courses" />
+                        <p class="text-gray-800 px-0 fs-5 py-5 fw-bold">Sample Uploaded.. Begin Test</p>
+                        <div class="col-md-3 d-flex justify-content-center my-auto">
+                            <a class="btn btn-primary rounded-1" onclick="testing();">Test</a>
+                        </div>
                     </div>
                     <!--end::Heading-->
                 </div>
 
                 <!--begin::Search Result-->
-                <div class="row" id="batchDiv">
+                <!-- <div class="row" id="batchDiv">
                     <div class="col-lg-12">
                         <div class="card card-custom gutter-b">
-                            <!--begin::Header-->
+                            
                             <div class="card-header border-0 pt-5 px-0 bg-transparent">
                                 <h6 class="card-title align-items-start flex-column">
                                     <span class="card-label fw-bolder mb-1 text-dark">Showing Batches</span>
                                 </h6>
                             </div>
                             <div class="card-body px-0 pt-1">
-                                <!--begin: Datatable-->
+                                
                                 <div class="table-responsive">
                                     <table class="table table-row-bordered align-middle gy-5 gs-7 border rounded w-100" id="batches_table"></table>
                                 </div>
-                                <!--end: Datatable-->
+                                
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!--end::Search Result-->
             </div>
             <!--end::Col-->
         </div>
         <!--end::Row-->
     </div>
+    <div id="kt_content_container1" class="container-xxl d-none">
+        <!--begin::Row-->
+        <div class="row gy-5 g-xl-8">
+            <!--begin::Col-->
+            <div class="col-xl-12">
+                <!--begin::List Widget 3-->
+                <div class="card card-xxl-stretch mb-xl-3 shadow-none">
+                    <div class="border-0 row mx-0 justify-content-between align-items-end mb-8 col-12 px-0">
+                        <div class="col-md-9 row">
+                            <!--begin::Name-->
+                            <div class="d-flex fw-bolder text-secondary flex-wrap col-md-8 col-12">
+                                <h4 class="fs-2qx text-dark mb-0">Result </h4>
+                                <span class="text-muted px-0 fs-6 fw-bold col-md-10 col-lg-12 mt-1">View Result of
+                                    Sample</span>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-3 d-flex justify-content-end my-auto">
+                            <a class="btn btn-primary rounded-1"
+                                onclick="showAjax('', 'new_batch.html', 'page_content');"><i
+                                    class="bi bi-plus-circle"></i> Add New Batch</a>
+                        </div> -->
+                    </div>
+                    <!--end::Body-->
+                </div>
+                <!--end:List Widget 3-->
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="row mx-0 justify-content-between py-3">
+
+                <div class="col-md-12 my-5" id="noBatchDiv">
+                    <!--begin::Heading-->
+                    <div class="  p-20" style="background: #F8F7F8;">
+                        <!-- <img src="assets/media/empty.png" width="50" class="" alt="no courses" /> -->
+                        <p class="text-gray-800 px-0 fs-3 py-5 fw-bold">Test done Succesfully!</p>
+                        <p class="text-gray-800 px-0 fs-5 py-5 fw-bold">Viral Level Detected: 50%</p>
+                        <p class="text-gray-800 px-0 fs-5 py-5 fw-bold">Suggested Vaccine Dosage to be Administerd: 3
+                        </p>
+                        <p class="text-gray-800 px-0 fs-5 py-5 fw-bold">Time Span for Vaccine Administration: Weekly</p>
+                        <div class="col-md-3 my-auto">
+                            <a class="btn btn-primary rounded-1" onclick="vaccination();">Begin Vaccination</a>
+                        </div>
+                    </div>
+                    <!--end::Heading-->
+                </div>
+
+                <!--begin::Search Result-->
+                <!-- <div class="row" id="batchDiv">
+                    <div class="col-lg-12">
+                        <div class="card card-custom gutter-b">
+                            
+                            <div class="card-header border-0 pt-5 px-0 bg-transparent">
+                                <h6 class="card-title align-items-start flex-column">
+                                    <span class="card-label fw-bolder mb-1 text-dark">Showing Batches</span>
+                                </h6>
+                            </div>
+                            <div class="card-body px-0 pt-1">
+                                
+                                <div class="table-responsive">
+                                    <table class="table table-row-bordered align-middle gy-5 gs-7 border rounded w-100" id="batches_table"></table>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!--end::Search Result-->
+            </div>
+            <!--end::Col-->
+        </div>
+        <!--end::Row-->
+    </div>
+
     <!--end::Container-->
 </div>
+
+
 <!--end::Post-->
 <script>
-    $(document).ready(function() {
-        $(".form-select").select2();
-        $("#batchDiv").hide();
-        $("#noBatchDiv").show();
-    });
+    // $(document).ready(function() {
+    //     $(".form-select").select2();
+    //     $("#batchDiv").hide();
+    //     $("#noBatchDiv").show();
+    // });
 
     // Get list of all batches
-    function batchList() {
-        blockUI.block();
+    // function batchList() {
+    //     blockUI.block();
 
-        return dopost({
-            type: "POST",
-            url: api_link + "route/cohorts.php",
-            data: {
-                userid: getItem("userid"),
-                sessionid: getItem("sessionid"),
-                action: "get_cohorts",
-            },
-            success: function(response) {
-                try {
-                    json = JSON.parse(response);
-                    if (json.statuscode == 0) {
-                        $("#batchDiv").show();
-                        $("#noBatchDiv").hide();
-                        if ($.fn.DataTable.isDataTable("#batches_table")) {
-                            $("#batches_table").DataTable().destroy();
-                        }
-                        blockUI.release();
-                        var table = $("#batches_table").DataTable({
-                            // buttons: ['copy', 'excel', 'pdf'],
-                            data: json.data,
-                            // dom: '<lf<t>ip>',
-                            dom: "<'row'" +
-                                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
-                                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
-                                ">" +
-                                "<'table-responsive'tr>" +
-                                "<'row'" +
-                                "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
-                                "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
-                                ">",
-                            responsive: true,
-                            columns: [{
-                                title: "Application Name",
-                                data: "application"
-                            }, {
-                                title: "Batch Code",
-                                data: "batchcode"
-                            }, {
-                                title: "Date From",
-                                data: "startdate"
-                            }, {
-                                title: "Date To",
-                                data: "enddate"
-                            }, {
-                                title: "Batch Days",
-                                data: "batchdys"
-                            }, {
-                                title: "Batch Status",
-                                data: "status"
-                            }, {
-                                title: "Actions"
-                            }, ],
-                            columnDefs: [{
-                                    targets: -1,
-                                    orderable: false,
-                                    searchable: false,
-                                    render: function(data, type, row) {
-                                        var retstr = `<div class="d-flex align-items-center">`
-                                        retstr += `<a href="#" onclick="addTimeSlot('${row.batch_id}','${row.batchcode}')" class="btn btn-sm btn-primary me-2 mb-1" title="Add Time Slot">Add Time Slot </a>`
-                                        retstr += `<a href="#" onclick="editBatch('${row.batch_id}')" class="btn btn-outline btn-sm btn-outline-primary me-2 mb-1" title="Edit batch">Edit</a>`;
-                                        retstr += `<i onclick="deleteBatch('${row.batch_id}',this)" class='bi bi-trash fs-3 text-danger' ></i>`;
-                                        retstr += `</div>`
-                                        return retstr;
-                                    },
-                                }, {
-                                    targets: 5,
-                                    orderable: false,
-                                    searchable: false,
-                                    render: function(data, type, row) {
-                                        var status = row.status;
-                                        var color = ''
-                                        switch (status) {
+    //     return dopost({
+    //         type: "POST",
+    //         url: api_link + "route/cohorts.php",
+    //         data: {
+    //             userid: getItem("userid"),
+    //             sessionid: getItem("sessionid"),
+    //             action: "get_cohorts",
+    //         },
+    //         success: function(response) {
+    //             try {
+    //                 json = JSON.parse(response);
+    //                 if (json.statuscode == 0) {
+    //                     $("#batchDiv").show();
+    //                     $("#noBatchDiv").hide();
+    //                     if ($.fn.DataTable.isDataTable("#batches_table")) {
+    //                         $("#batches_table").DataTable().destroy();
+    //                     }
+    //                     blockUI.release();
+    //                     var table = $("#batches_table").DataTable({
+    //                         // buttons: ['copy', 'excel', 'pdf'],
+    //                         data: json.data,
+    //                         // dom: '<lf<t>ip>',
+    //                         dom: "<'row'" +
+    //                             "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+    //                             "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+    //                             ">" +
+    //                             "<'table-responsive'tr>" +
+    //                             "<'row'" +
+    //                             "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+    //                             "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+    //                             ">",
+    //                         responsive: true,
+    //                         columns: [{
+    //                             title: "Application Name",
+    //                             data: "application"
+    //                         }, {
+    //                             title: "Batch Code",
+    //                             data: "batchcode"
+    //                         }, {
+    //                             title: "Date From",
+    //                             data: "startdate"
+    //                         }, {
+    //                             title: "Date To",
+    //                             data: "enddate"
+    //                         }, {
+    //                             title: "Batch Days",
+    //                             data: "batchdys"
+    //                         }, {
+    //                             title: "Batch Status",
+    //                             data: "status"
+    //                         }, {
+    //                             title: "Actions"
+    //                         }, ],
+    //                         columnDefs: [{
+    //                                 targets: -1,
+    //                                 orderable: false,
+    //                                 searchable: false,
+    //                                 render: function(data, type, row) {
+    //                                     var retstr = `<div class="d-flex align-items-center">`
+    //                                     retstr += `<a href="#" onclick="addTimeSlot('${row.batch_id}','${row.batchcode}')" class="btn btn-sm btn-primary me-2 mb-1" title="Add Time Slot">Add Time Slot </a>`
+    //                                     retstr += `<a href="#" onclick="editBatch('${row.batch_id}')" class="btn btn-outline btn-sm btn-outline-primary me-2 mb-1" title="Edit batch">Edit</a>`;
+    //                                     retstr += `<i onclick="deleteBatch('${row.batch_id}',this)" class='bi bi-trash fs-3 text-danger' ></i>`;
+    //                                     retstr += `</div>`
+    //                                     return retstr;
+    //                                 },
+    //                             }, {
+    //                                 targets: 5,
+    //                                 orderable: false,
+    //                                 searchable: false,
+    //                                 render: function(data, type, row) {
+    //                                     var status = row.status;
+    //                                     var color = ''
+    //                                     switch (status) {
 
-                                            case "On going":
-                                                color = "primary"
-                                                break;
-                                            case "Closed":
-                                                color = "danger"
-                                                break;
-                                            case "Pending":
-                                                color = "warning"
-                                                break;
-                                            default:
-                                                color = "success"
+    //                                         case "On going":
+    //                                             color = "primary"
+    //                                             break;
+    //                                         case "Closed":
+    //                                             color = "danger"
+    //                                             break;
+    //                                         case "Pending":
+    //                                             color = "warning"
+    //                                             break;
+    //                                         default:
+    //                                             color = "success"
 
-                                        }
-                                        var retstr = `<span class="badge badge-light-${color}">${status}</span>`
-                                        return retstr;
-                                    },
-                                },
+    //                                     }
+    //                                     var retstr = `<span class="badge badge-light-${color}">${status}</span>`
+    //                                     return retstr;
+    //                                 },
+    //                             },
 
-                                {
-                                    defaultContent: "-",
-                                    targets: "_all",
-                                },
+    //                             {
+    //                                 defaultContent: "-",
+    //                                 targets: "_all",
+    //                             },
 
-                            ],
-                        });
-                    } else {
-                        blockUI.release();
-                        $("#batchDiv").hide();
-                        $("#noBatchDiv").show();
-                        Swal.fire({
-                            title: "ITA Portal",
-                            html: json.status,
-                            icon: "error",
-                            buttonsStyling: true,
-                            confirmButtonText: "Ok, got it!",
-                            customClass: {
-                                confirmButton: "btn btn-sm btn-primary"
-                            },
-                        });
-                    }
-                } catch (e) {
-                    console.error(e.message);
-                }
-            },
-            error: function() {
-                loadingerr;
-            },
-        });
-    }
+    //                         ],
+    //                     });
+    //                 } else {
+    //                     blockUI.release();
+    //                     $("#batchDiv").hide();
+    //                     $("#noBatchDiv").show();
+    //                     Swal.fire({
+    //                         title: "ITA Portal",
+    //                         html: json.status,
+    //                         icon: "error",
+    //                         buttonsStyling: true,
+    //                         confirmButtonText: "Ok, got it!",
+    //                         customClass: {
+    //                             confirmButton: "btn btn-sm btn-primary"
+    //                         },
+    //                     });
+    //                 }
+    //             } catch (e) {
+    //                 console.error(e.message);
+    //             }
+    //         },
+    //         error: function() {
+    //             loadingerr;
+    //         },
+    //     });
+    // }
 
     // Edit a batch
     function editBatch(batch) {
@@ -220,19 +302,19 @@
                 batchid: batch
             },
             type: "POST",
-            success: function(response) {
+            success: function (response) {
                 try {
                     var json = JSON.parse(response);
                     if (json.statuscode == 0) {
                         blockUI.release();
                         let config = json.data;
-                        $("#updateBatchModalBody").load("update_batch.html", function() {
+                        $("#updateBatchModalBody").load("update_batch.html", function () {
                             $("#modalHeader").html("Update Batch")
                             $("#editbtn").attr("onclick", "updateBatch('" + batch + "')");
                             var form = $("#update_batch_form");
                             if (form.length > 0) {
                                 var datafields = {};
-                                form.find('.ac').each(function() {
+                                form.find('.ac').each(function () {
                                     try {
                                         if (config.hasOwnProperty($(this).attr('fields'))) {
                                             $(this).val(config[$(this).attr('fields')]);
@@ -283,14 +365,14 @@
                         action: "delete_cohort",
                         batchid: actid,
                     },
-                    success: function(response) {
+                    success: function (response) {
                         try {
                             blockUI.release();
                             var trow = $(btn).closest("tr");
                             var json = JSON.parse(response);
                             if (json.statuscode == 0) {
                                 blockUI.release();
-                                trow.fadeOut(400, function(trow) {
+                                trow.fadeOut(400, function (trow) {
                                     $('#batches_table').row(trow).remove().draw();
                                 });
                                 Swal.fire({
@@ -375,14 +457,66 @@
     // Add a time slot
     function addTimeSlot(batchid, batchcode) {
         // blockUI.block();
-        showAjax('', 'add_time_slot.html', 'page_content', function(responseTxt, statusTxt, xhr) {
+        showAjax('', 'add_time_slot.html', 'page_content', function (responseTxt, statusTxt, xhr) {
             getTimeSlotsByBatchcode(batchcode)
             setItem("batchcode", batchcode)
             setItem("batchid", batchid)
             getBatch(batchid)
-                // blockUI.release();
+            // blockUI.release();
         })
 
     }
-    batchList()
+    // batchList()
+
+
+
+    function testing() {
+        blockUI.block();
+        setTimeout(() => {
+            blockUI.release();
+        }, 3000);
+        setTimeout(() => {
+            Swal.fire({
+                title: "Vaccine System",
+                html: "Test Succesfully Concluded",
+                icon: "success",
+                buttonsStyling: false,
+                confirmButtonText: "View Result!",
+                customClass: { confirmButton: "btn btn-primary" },
+            }).then(() => {
+                // showAjax('','batches.html','page_content')
+                $("#kt_content_container1").removeClass("d-none");
+                $("#kt_content_container").hide();
+            })
+        }, 3000);
+    }
+
+    function vaccination() {
+        blockUI.block();
+        setTimeout(() => {
+            blockUI.release();
+        }, 3000);
+        setTimeout(() => {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Administer Vaccine!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Vaccine Administred!',
+                        'See You Next Week!',
+                        'success'
+                    )
+                }
+            }).then(() => {
+                // showAjax('','batches.html','page_content')
+                showAjax('', 'courses.html', 'page_content');
+            })
+        }, 3000);
+    }
 </script>

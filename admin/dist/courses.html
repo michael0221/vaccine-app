@@ -19,12 +19,12 @@
                         <div class="col-md-9 row">
                             <!--begin::Name-->
                             <div class="d-flex fw-bolder text-secondary flex-wrap col-md-8 col-12">
-                                <h4 class="fs-2qx text-dark mb-0">Course </h4>
-                                <span class="text-muted px-0 fs-6 fw-bold col-md-10 col-lg-12 mt-1">Easily set up your Course.</span>
+                                <h4 class="fs-2qx text-dark mb-0">Vaccination </h4>
+                                <span class="text-muted px-0 fs-6 fw-bold col-md-10 col-lg-12 mt-1">Select Patient to Begin Vaccination Process</span>
                             </div>
                         </div>
                         <div class="col-md-3 d-flex justify-content-end my-auto">
-                            <a class="btn btn-primary rounded-1" onclick="showAjax('', 'add_course.html', 'page_content');"><i class="bi bi-plus-circle"></i> Add New Course</a>
+                            <a class="btn btn-primary rounded-1" onclick="showAjax('', 'add_course.html', 'page_content');"><i class="bi bi-plus-circle"></i>Test Sample</a>
                         </div>
                     </div>
                     <!--end::Body-->
@@ -39,7 +39,7 @@
                     <!--begin::Heading-->
                     <div class="text-center p-20" style="background: #F8F7F8;">
                     <img src="assets/media/empty.png" class="" alt="no courses" />
-                    <p class="text-gray-800 px-0 fs-5 py-5 fw-bold">No Course to show yet. Add one</p>
+                    <p class="text-gray-800 px-0 fs-5 py-5 fw-bold">No Patient to show yet. Add one</p>
                     </div>
                     <!--end::Heading-->
                 </div>
@@ -79,7 +79,7 @@
         $("#courseDiv").hide();
         $("#noCourseDiv").show();
     });
-    coursesList();
+    // coursesList();
     
     // Edit a course
     function editCourses(course) {

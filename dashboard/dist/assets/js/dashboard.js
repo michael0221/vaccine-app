@@ -118,7 +118,11 @@ function getDashboard() {
             token: newQueryString("token"),
             // sessionid: newQueryString("sessionid"),
         },
-        type: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Token " + newQueryString("token"),
+        },
+        type: "GET",
         success: function(response) {
             try {
                 // var json = JSON.parse(response);
