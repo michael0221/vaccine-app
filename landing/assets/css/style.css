@@ -9287,7 +9287,7 @@ textarea:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 65px;
+  margin-top: 25px;
 }
 .intro2-section .container {
   z-index: 9;

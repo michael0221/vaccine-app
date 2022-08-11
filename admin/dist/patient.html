@@ -57,7 +57,7 @@
                         <div class="card-body px-0 pt-1">
                             <!--begin: Datatable-->
                             <div class="table-responsive">
-                                <table class="table table-row-bordered align-middle gy-5 gs-7 border rounded w-100" id="category_table"></table>
+                                <table class="table table-row-bordered align-middle gy-5 gs-7 border rounded w-100" id="patient_table"></table>
                             </div> 
                             <!--end: Datatable-->
                         </div>
@@ -79,50 +79,37 @@
         $("#courseDiv").hide();
         $("#noCourseDiv").show();
     });
-    // categoryList();
+    patientList();
     // Get list of all courses
-    function categoryList() {
-        // $.blockUI({
-        //     message: '<div class="text-center rounded-3 d-flex justify-content-center align-items-center" style="background-image: url(../assets/images/background_doodle.png); background-size: cover; height: 412px; width: 455px; background-color: #fff; background-blend-mode: multiply"> <div class=""> <div class="spinner-border text-primary p-15 display-2 mb-5" role="status"></div> <h4 class="text-secondary" style="padding-top:5px; font-family: GT Walsheim Pro Bold!important;">Just a moment</h4> </div></div>',
-        //     css: {
-        //         display: "flex",
-        //         padding: "20%",
-        //         margin: "0",
-        //         width: "100%",
-        //         height: "100vh",
-        //         top: "0%",
-        //         left: "0%",
-        //         textAlign: "center",
-        //         color: "#000",
-        //         border: "0px solid #aaa",
-        //         backgroundColor: "rgba(0,0,0,0.4)",
-        //         cursor: "wait",
-        //         alignItems: "center",
-        //         justifyContent: "center",
-        //     },
-        // });
-
-        return dopost({
-            type: "POST",
-            url: api_link + "route/categories.php",
+    function patientList() {
+        blockUI.block();
+        return $.ajax({
+            type: "GET",
+            url:  "https://covid-vaccine-system.herokuapp.com/patient/get-patients/",
             data: {
-                userid: getItem("userid"),
-                sessionid: getItem("sessionid"),
-                action: "get_categories",
+                // userid: getItem("userid"),
+                // sessionid: getItem("sessionid"),
+                // action: "get_categories",
+            },
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Token " + newQueryString("token"),
             },
             success: function(response) {
                 try {
-                    var json = JSON.parse(response);
-                    if (json.statuscode == 0) {
+                    console.log(response);
+                    // var json = JSON.parse(response);
+                    if (response.status == 200) {
                         $("#courseDiv").show();
                         $("#noCourseDiv").hide();
-                        if ($.fn.DataTable.isDataTable("#category_table")) {
-                            $("#category_table").DataTable().destroy();
+
+                        if ($.fn.DataTable.isDataTable("#patient_table")) {
+                            $("#patient_table").DataTable().destroy();
                         }
-                        // blockUI.release();
-                        var table = $("#category_table").DataTable({
+                        blockUI.release();
+                        var table = $("#patient_table").DataTable({
                             // buttons: ['copy', 'excel', 'pdf'],
-                            data: json.data,
+                            data: response.data,
                             // dom: '<lf<t>ip>',
                             dom: "<'row'" +
                                 "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
@@ -135,32 +122,25 @@
                                 ">",
                             responsive: true,
                             columns: [
-                                { title: "Category Name", data: "category_name" },
-                                { title: "Category Type", data: "category_type" },
-                                { title: "Description", data: "category_desc" },
-                                { title: "Actions" },
+                                { title: "First", data: "first_name" },
+                                { title: "Last Name", data: "last_name" },
+                                { title: "Gender", data: "gender" },
+                                { title: "Age", data: "age" },
+                                { title: "Genotype", data: "genotype" },
+                                { title: "Blood Group", data: "blood_group" },
+                                { title: "Phone Number", data: "phone_number" },
+                                { title: "Email", data: "email" },
+                                // { title: "Actions" },
                             ],
-                            columnDefs: [{
-                                    targets: -1,
-                                    orderable: false,
-                                    searchable: false,
-                                    render: function(data, type, row) {
-                                        var retstr = `<a href="#" onclick="editCategory('${row.category_id}')" class="btn btn-sm btn-primary me-2 mb-1" title="Edit course"><i class='bi bi-pencil-square'></i>Edit</a>`;
-                                        retstr += `<a href="#" onclick="deleterecord('${row.category_id}',this)" class="btn btn-sm btn-danger" title="Delete course"><i class='bi bi-trash' ></i>Delete</a>`;
-                                        return retstr;
-                                    },
-                                },
-
-                                { defaultContent: "-", targets: "_all", },
-                            ],
+                           
                         });
                     } else {
-                        // blockUI.release();
+                        blockUI.release();
                         $("#courseDiv").hide();
                         $("#noCourseDiv").show();
                         Swal.fire({
-                            title: "ITA Portal",
-                            html: json.status,
+                            title: "Vaccine System",
+                            // html: json.status,
                             icon: "error",
                             buttonsStyling: true,
                             confirmButtonText: "Ok, got it!",
@@ -172,7 +152,7 @@
                 }
             },
             error: function() {
-                loadingerr;
+                // loadingerr;
             },
         });
     }

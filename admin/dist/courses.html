@@ -20,11 +20,14 @@
                             <!--begin::Name-->
                             <div class="d-flex fw-bolder text-secondary flex-wrap col-md-8 col-12">
                                 <h4 class="fs-2qx text-dark mb-0">Vaccination </h4>
-                                <span class="text-muted px-0 fs-6 fw-bold col-md-10 col-lg-12 mt-1">Select Patient to Begin Vaccination Process</span>
+                                <span class="text-muted px-0 fs-6 fw-bold col-md-10 col-lg-12 mt-1">Select Patient to
+                                    Begin Vaccination Process</span>
                             </div>
                         </div>
                         <div class="col-md-3 d-flex justify-content-end my-auto">
-                            <a class="btn btn-primary rounded-1" onclick="showAjax('', 'add_course.html', 'page_content');"><i class="bi bi-plus-circle"></i>Test Sample</a>
+                            <!-- <a class="btn btn-primary rounded-1"
+                                onclick="showAjax('', 'add_course.html', 'page_content');"><i
+                                    class="bi bi-plus-circle"></i>Test Sample</a> -->
                         </div>
                     </div>
                     <!--end::Body-->
@@ -34,12 +37,12 @@
             <!--end::Col-->
             <!--begin::Col-->
             <div class="row mx-0 justify-content-between py-3">
-    
+
                 <div class="col-md-12 my-5" id="noCourseDiv">
                     <!--begin::Heading-->
                     <div class="text-center p-20" style="background: #F8F7F8;">
-                    <img src="assets/media/empty.png" class="" alt="no courses" />
-                    <p class="text-gray-800 px-0 fs-5 py-5 fw-bold">No Patient to show yet. Add one</p>
+                        <img src="assets/media/empty.png" class="" alt="no courses" />
+                        <p class="text-gray-800 px-0 fs-5 py-5 fw-bold">No Patient to show yet. Add one</p>
                     </div>
                     <!--end::Heading-->
                 </div>
@@ -47,21 +50,24 @@
                 <!--begin::Search Result-->
                 <div class="row" id="courseDiv">
                     <div class="col-lg-12">
-                    <div class="card card-custom gutter-b">
-                        <!--begin::Header-->
-                        <div class="card-header border-0 px-0 bg-transparent">
-                            <h6 class="card-title align-items-start flex-column">
-                                <span class="card-label fw-bolder mb-1 text-dark">Showing Courses</span>
-                            </h6>
+                        <div class="card card-custom gutter-b">
+                            <!--begin::Header-->
+                            <div class="card-header border-0 px-0 bg-transparent">
+                                <h6 class="card-title align-items-start flex-column">
+                                    <span class="card-label fw-bolder mb-1 text-dark">Showing Courses</span>
+                                </h6>
+                            </div>
+                            <div class="card-body px-0 pt-1">
+                                <!--begin: Datatable-->
+                                <div class="table-responsive">
+                                    <table class="table table-row-bordered align-middle gy-5 gs-7 border rounded w-100"
+                                        id="patientss_table">
+                                    
+                                    </table>
+                                </div>
+                                <!--end: Datatable-->
+                            </div>
                         </div>
-                        <div class="card-body px-0 pt-1">
-                            <!--begin: Datatable-->
-                            <div class="table-responsive">
-                                <table class="table table-row-bordered align-middle gy-5 gs-7 border rounded w-100" id="courses_table"></table>
-                            </div> 
-                            <!--end: Datatable-->
-                        </div>
-                    </div>
                     </div>
                 </div>
                 <!--end::Search Result-->
@@ -74,13 +80,118 @@
 </div>
 <!--end::Post-->
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
+
         $(".form-select").select2();
         $("#courseDiv").hide();
         $("#noCourseDiv").show();
+        patientsList().then(()=>{
+            $("#patientss_table tbody").on("click", "td", function () {
+            var data = $("#patientss_table").DataTable().row(this).data();
+            console.log(data);
+            setItem("patient_full_name", data.first_name + " " + data.last_name);
+            setItem("patient_id", data.pk);
+
+            showAjax("", "add_course.html", "page_content");
+        });
+        })
+        
     });
-    // coursesList();
-    
+    patientsList();
+
+    function patientsList() {
+        // blockUI.block();
+        return $.ajax({
+            type: "GET",
+            url: "https://covid-vaccine-system.herokuapp.com/patient/get-patients/",
+            data: {
+                // userid: getItem("userid"),
+                // sessionid: getItem("sessionid"),
+                // action: "get_categories",
+            },
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Token " + newQueryString("token"),
+            },
+            success: function (response) {
+                try {
+                    console.log(response);
+                    // var json = JSON.parse(response);
+                    if (response.status == 200) {
+                        $("#courseDiv").show();
+                        $("#noCourseDiv").hide();
+
+                        if ($.fn.DataTable.isDataTable("#patientss_table")) {
+                            $("#patientss_table").DataTable().destroy();
+                        }
+                        blockUI.release();
+                        var table = $("#patientss_table").DataTable({
+                            // buttons: ['copy', 'excel', 'pdf'],
+                            data: response.data,
+                            // dom: '<lf<t>ip>',
+                            dom: "<'row'" +
+                                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+                                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                                ">" +
+                                "<'table-responsive'tr>" +
+                                "<'row'" +
+                                "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                                "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                                ">",
+                            responsive: true,
+                            
+                            columns: [
+                                { title: "First Name", data: "first_name" },
+                                { title: "Last Name", data: "last_name" },
+                                { title: "Gender", data: "gender" },
+                                { title: "Age", data: "age" },
+                                { title: "Genotype", data: "genotype" },
+                                { title: "Blood Group", data: "blood_group" },
+                                { title: "Phone Number", data: "phone_number" },
+                                // { title: "Email", data: "email" },
+                                { title: "Actions" },
+                            ],
+                            
+                            columnDefs: [{
+                                targets: -1,
+                                data: null,
+                                orderable: false,
+                                searchable: false,
+                                render: function (data, type, row) {
+                                    var retstr = `<a href="#" onclick="startVaccination()"  class="btn btn-sm btn-primary me-2 mb-1" title="Test Sample">Test Sample</a>`;
+                                    // retstr += `<a href="#" onclick="deleterecord('${row.category_id}',this)" class="btn btn-sm btn-danger" title="Delete course"><i class='bi bi-trash' ></i>Delete</a>`;
+                                    return retstr;
+                                },
+                            },
+
+                            { defaultContent: "-", targets: "_all", },
+                            ],
+                        });
+                        
+                    } else {
+                        blockUI.release();
+                        $("#courseDiv").hide();
+                        $("#noCourseDiv").show();
+                        Swal.fire({
+                            title: "Vaccine System",
+                            // html: json.status,
+                            icon: "error",
+                            buttonsStyling: true,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: { confirmButton: "btn btn-sm btn-primary" },
+                        });
+                    }
+                } catch (e) {
+                    console.error(e.message);
+                }
+            },
+            error: function () {
+                // loadingerr;
+            },
+        });
+    }
+
+
     // Edit a course
     function editCourses(course) {
         // blockUI.block();
@@ -112,14 +223,14 @@
                         action: "delete_course",
                         course_code: actid,
                     },
-                    success: function(response) {
+                    success: function (response) {
                         try {
                             blockUI.release();
                             var trow = $(btn).closest("tr");
                             var json = JSON.parse(response);
                             if (json.statuscode == 0) {
                                 $.unblockUI("hide");
-                                trow.fadeOut(400, function(trow) {
+                                trow.fadeOut(400, function (trow) {
                                     $('#courses_table').row(trow).remove().draw();
                                 });
                                 Swal.fire({
@@ -160,5 +271,10 @@
         });
     }
 
+
+   
+    function startVaccination() {
+       
+    }
 
 </script>

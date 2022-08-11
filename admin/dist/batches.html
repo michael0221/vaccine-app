@@ -112,8 +112,13 @@
                     <div class="  p-20" style="background: #F8F7F8;">
                         <!-- <img src="assets/media/empty.png" width="50" class="" alt="no courses" /> -->
                         <p class="text-gray-800 px-0 fs-3 py-5 fw-bold">Test done Succesfully!</p>
-                        <p class="text-gray-800 px-0 fs-5 py-5 fw-bold">Viral Level Detected: 50%</p>
-                        <p class="text-gray-800 px-0 fs-5 py-5 fw-bold">Suggested Vaccine Dosage to be Administerd: 3
+                        <p class="text-gray-800 px-0 fs-5 py-5 fw-bold">Patient Name: <span id="patient_name"></span>
+                        </p>
+                        <p class="text-gray-800 px-0 fs-5 py-5 fw-bold">Viral Level Detected: <span
+                                id="viral_level"></span></p>
+                        <p class="text-gray-800 px-0 fs-5 py-5 fw-bold">Suggested Vaccine Dosage to be Administerd:
+                            <span id="suggested_vaccine"></span>
+                        </p>
                         </p>
                         <p class="text-gray-800 px-0 fs-5 py-5 fw-bold">Time Span for Vaccine Administration: Weekly</p>
                         <div class="col-md-3 my-auto">
@@ -469,54 +474,194 @@
     // batchList()
 
 
-
     function testing() {
-        blockUI.block();
-        setTimeout(() => {
-            blockUI.release();
-        }, 3000);
-        setTimeout(() => {
-            Swal.fire({
-                title: "Vaccine System",
-                html: "Test Succesfully Concluded",
-                icon: "success",
-                buttonsStyling: false,
-                confirmButtonText: "View Result!",
-                customClass: { confirmButton: "btn btn-primary" },
-            }).then(() => {
-                // showAjax('','batches.html','page_content')
-                $("#kt_content_container1").removeClass("d-none");
-                $("#kt_content_container").hide();
-            })
-        }, 3000);
+        $.ajax({
+            url: "https://covid-vaccine-system.herokuapp.com/patient/new-patient-case/",
+            data: {
+                pk: getItem("patient_id"),
+            },
+            type: "POST",
+            success: function (response) {
+                console.log(response);
+                setItem("vaccine_id", response.vaccine_pk);
+                try {
+                    // let tokenn = response.token;
+                    if (response.status == 200) {
+                        blockUI.block();
+                        setTimeout(() => {
+                            blockUI.release();
+                        }, 3000);
+                        setTimeout(() => {
+                            Swal.fire({
+                                title: "Vaccine System",
+                                html: "Test Succesfully Concluded",
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "View Result!",
+                                customClass: { confirmButton: "btn btn-primary" },
+                            }).then(() => {
+                                // showAjax('','batches.html','page_content')
+                                $("#kt_content_container1").removeClass("d-none");
+                                $("#kt_content_container").hide();
+                            }).then(() => {
+                                result();
+                            })
+                        }, 3000);
+
+                    } else {
+                        // $.unblockUI();
+                        // callSweetMsg(response, "Vaccine System", "error");
+                        console.log("michael");
+                        Swal.fire({
+                            title: "Vaccine System",
+                            html: response.message,
+                            icon: "error",
+                            buttonsStyling: true,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: { confirmButton: "btn-sm btn-primary" },
+                        });
+                        $("#sign_in_submit").html("Log in to dashboard");
+                    }
+                } catch (e) {
+                    console.log(e.message);
+                }
+            },
+        });
+    }
+
+    function result() {
+        $.ajax({
+            url: "https://covid-vaccine-system.herokuapp.com/patient/vaccine-case-status/",
+            data: {
+                // patient: getItem("patient_id"),
+                pk: getItem("vaccine_id"),
+            },
+            type: "POST",
+            success: function (response) {
+                console.log(response);
+                // setItem("vaccine_id" , response.vaccine_pk);
+                try {
+                    // let tokenn = response.token;
+                    if (response.status == 200) {
+                        let namee = getItem('patient_full_name');
+                        $("#viral_level").html(response.viral_level + "%");
+                        $("#suggested_vaccine").html(Math.round(response.viral_level / 20));
+                        $("#patient_name").html(namee);
+
+
+                    } else {
+                        // $.unblockUI();
+                        // callSweetMsg(response, "Vaccine System", "error");
+                        console.log("michael");
+                        Swal.fire({
+                            title: "Vaccine System",
+                            html: response.message,
+                            icon: "error",
+                            buttonsStyling: true,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: { confirmButton: "btn-sm btn-primary" },
+                        });
+                        $("#sign_in_submit").html("Log in to dashboard");
+                    }
+                } catch (e) {
+                    console.log(e.message);
+                }
+            },
+        });
     }
 
     function vaccination() {
-        blockUI.block();
-        setTimeout(() => {
-            blockUI.release();
-        }, 3000);
-        setTimeout(() => {
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, Administer Vaccine!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire(
-                        'Vaccine Administred!',
-                        'See You Next Week!',
-                        'success'
-                    )
-                }
-            }).then(() => {
-                // showAjax('','batches.html','page_content')
-                showAjax('', 'courses.html', 'page_content');
-            })
-        }, 3000);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Administer Vaccine!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                blockUI.block();
+
+                $.ajax({
+                    url: "https://covid-vaccine-system.herokuapp.com/patient/administer-vaccine/",
+                    data: {
+                        // patient: getItem("patient_id"),
+                        pk: getItem("vaccine_id"),
+                    },
+                    type: "POST",
+                    success: function (response) {
+                        console.log(response);
+                        // setItem("vaccine_id" , response.vaccine_pk);
+                        try {
+                            // let tokenn = response.token;
+                            if (response.status == 200) {
+                                //     let namee = getItem('patient_full_name');
+                                //    $("#viral_level").html(response.viral_level + "%");
+                                //       $("#suggested_vaccine").html(Math.round(response.viral_level/20));
+                                //         $("#patient_name").html(namee);
+                                blockUI.release();
+                                Swal.fire({
+                                    title: "Vaccine System",
+                                    html: "Vaccine Administered Successfully! See You Next week",
+                                    icon: "success",
+                                    buttonsStyling: true,
+                                    confirmButtonText: "Ok, got it!",
+                                    customClass: { confirmButton: "btn-sm btn-primary" },
+                                }).then(()=>{
+                                    showAjax('', 'courses.html', 'page_content')
+                                })
+                            } else {
+                                // $.unblockUI();
+                                // callSweetMsg(response, "Vaccine System", "error");
+                                console.log("michael");
+                                Swal.fire({
+                                    title: "Vaccine System",
+                                    html: response.message,
+                                    icon: "error",
+                                    buttonsStyling: true,
+                                    confirmButtonText: "Ok, got it!",
+                                    customClass: { confirmButton: "btn-sm btn-primary" },
+                                });
+                                $("#sign_in_submit").html("Log in to dashboard");
+                            }
+                        } catch (e) {
+                            console.log(e.message);
+                        }
+                    },
+                });
+            }
+
+        }
+        )
     }
+
+    // function vaccinatttion() {
+    //             blockUI.block();
+    //             setTimeout(() => {
+    //                 blockUI.release();
+    //             }, 3000);
+    //             setTimeout(() => {
+    //                 Swal.fire({
+    //                     title: 'Are you sure?',
+    //                     text: "You won't be able to revert this!",
+    //                     icon: 'warning',
+    //                     showCancelButton: true,
+    //                     confirmButtonColor: '#3085d6',
+    //                     cancelButtonColor: '#d33',
+    //                     confirmButtonText: 'Yes, Administer Vaccine!'
+    //                 }).then((result) => {
+    //                     if (result.isConfirmed) {
+    //                         Swal.fire(
+    //                             'Vaccine Administred!',
+    //                             'See You Next Week!',
+    //                             'success'
+    //                         )
+    //                     }
+    //                 }).then(() => {
+    //                     // showAjax('','batches.html','page_content')
+    //                     showAjax('', 'courses.html', 'page_content');
+    //                 })
+    //             }, 3000);
+    //         }
 </script>

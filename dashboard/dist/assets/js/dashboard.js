@@ -64,8 +64,12 @@ function logOut() {
         },
     }).then((result) => {
         if (result.isConfirmed) {
-            mainLogout();
+            // mainLogout();
+            window.localStorage.clear();
+            window.location.href = "../../index.html";
         }
+    }).then(()=>{
+        toastr["success"]("Logged out successfully");
     });
 }
 
@@ -98,11 +102,10 @@ function mainLogout() {
 
 function goHome() {
     var ret = {
-        sessionid: newQueryString('sessionid'),
-        userid: newQueryString('userid')
+        token: newQueryString('token'),
     };
     // window.location.href = "index.html?" + serialize(ret);
-    window.location.href = json.data.page + "?" + serialize(ret);
+    window.location.href = "" + "?" + serialize(ret);
 }
 
 // GET DASHBOARD

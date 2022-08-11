@@ -45,6 +45,8 @@
         <div class="col-xl-12 mb-3">
             <!--begin::Form-->
             <!--begin::Heading-->
+            <h3 class="py-5">Patient Name: <span id="patientname">David</span></h3>
+
             <div class=" d-flex flex-column justify-content-center align-items-center p-20"
                 style="background: #F8F7F8;">
                 <img src="assets/media/empty.png" width="50" class="" alt="no courses" />
@@ -74,44 +76,13 @@
         //     }
         // );
     });
-    // getCategories();
-    function getCategories() {
-        blockUI.block();
-        return dopost({
-            type: "POST",
-            url: api_link + "route/categories.php",
-            data: {
-                userid: getItem("userid"),
-                sessionid: getItem("sessionid"),
-                action: "get_categories",
-            },
-            "success": function (response) {
-                try {
-                    blockUI.release();
-                    var json = JSON.parse(response);
-                    var data = json.data;
-                    if (json.statuscode == 0) {
-                        var strr = "";
-                        var catId = $("#category_id");
-                        catId.html("<option value=''>Select Category</option>")
-                        var x = "";
-                        $.each(json.data, function (key, val) {
-                            var option = $("<option/>");
-                            option.val(val.category_id);
-                            option.text(val.category_name);
-                            // option.attr("amount", val.amount);
-                            catId.append(option);
-                        });
-                        catId.select2({ tags: true });
-                    }
-
-                } catch (e) {
-                    console.error(e.status);
-                }
-            },
-            // "error": loadingerr
-        });
+    vaccinationupload();
+    function vaccinationupload() {
+        let name = getItem('patient_full_name');
+                $('#patientname').text(name);
+    
     }
+    
 
     // Add courses
     function addCourses() {
