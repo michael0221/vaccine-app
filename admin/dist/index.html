@@ -785,13 +785,13 @@
                                     <!--begin::Col-->
                                     <div class="col-12">
                                         <!--begin::List Widget 3-->
-                                        <div class="card card-xxl-stretch mb-xl-3 shadow-none">
+                                        <!-- <div class="card card-xxl-stretch mb-xl-3 shadow-none">
                                             <h6 class="text-gray-800">Recent Vaccine Doses Administered </h6>
                                             <div class="border-0 row mx-0 mt-5">
-                                                <table class="table table-row-bordered gy-7 w-100" id="batches_table">
+                                                <table class="table table-row-bordered gy-7 w-100" id="recent-patients">
                                                 </table>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!--end:List Widget 3-->
                                     </div>
                                     <!--end::Col-->
@@ -912,6 +912,7 @@
     <script>
         getDashboard().then(() => {
             // batchList();
+            // recentvaccinelist();
             console.log("success");
         })
 
@@ -921,3 +922,79 @@
 <!--end::Body-->
 
 </html>
+
+<script>
+    function recentvaccinelist() {
+        blockUI.block();
+        return $.ajax({
+            type: "GET",
+            url:  "https://covid-vaccine-system.herokuapp.com/patient/recent-patients/",
+            data: {
+                // userid: getItem("userid"),
+                // sessionid: getItem("sessionid"),
+                // action: "get_categories",
+            },
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Token " + newQueryString("token"),
+            },
+            success: function(response) {
+                try {
+                    console.log(response);
+                    // var json = JSON.parse(response);
+                    if (response.status == 200) {
+                        
+
+                        if ($.fn.DataTable.isDataTable("#recent-patients")) {
+                            $("#recent-patients").DataTable().destroy();
+                        }
+                        blockUI.release();
+                        var table = $("#recent-patients").DataTable({
+                            // buttons: ['copy', 'excel', 'pdf'],
+                            data: response.data,
+                            // dom: '<lf<t>ip>',
+                            dom: "<'row'" +
+                                "<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+                                "<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+                                ">" +
+                                "<'table-responsive'tr>" +
+                                "<'row'" +
+                                "<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+                                "<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+                                ">",
+                            responsive: true,
+                            columns: [
+                                { title: "First", data: "first_name" },
+                                { title: "Last Name", data: "last_name" },
+                                { title: "Gender", data: "gender" },
+                                { title: "Age", data: "age" },
+                                { title: "Genotype", data: "genotype" },
+                                { title: "Blood Group", data: "blood_group" },
+                                { title: "Phone Number", data: "phone_number" },
+                                { title: "Date Taken", data: "date_taken" },
+                                // { title: "Actions" },
+                            ],
+                           
+                        });
+                    } else {
+                        blockUI.release();
+                        
+                        Swal.fire({
+                            title: "Vaccine System",
+                            // html: json.status,
+                            icon: "error",
+                            buttonsStyling: true,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: { confirmButton: "btn btn-sm btn-primary" },
+                        });
+                    }
+                } catch (e) {
+                    console.error(e.message);
+                }
+            },
+            error: function() {
+                // loadingerr;
+            },
+        });
+    }
+</script>
