@@ -785,13 +785,13 @@
                                     <!--begin::Col-->
                                     <div class="col-12">
                                         <!--begin::List Widget 3-->
-                                        <!-- <div class="card card-xxl-stretch mb-xl-3 shadow-none">
+                                        <div class="card card-xxl-stretch mb-xl-3 shadow-none">
                                             <h6 class="text-gray-800">Recent Vaccine Doses Administered </h6>
                                             <div class="border-0 row mx-0 mt-5">
                                                 <table class="table table-row-bordered gy-7 w-100" id="recent-patients">
                                                 </table>
                                             </div>
-                                        </div> -->
+                                        </div>
                                         <!--end:List Widget 3-->
                                     </div>
                                     <!--end::Col-->
@@ -912,7 +912,7 @@
     <script>
         getDashboard().then(() => {
             // batchList();
-            // recentvaccinelist();
+            recentvaccinelist();
             console.log("success");
         })
 
@@ -967,10 +967,10 @@
                                 { title: "First", data: "first_name" },
                                 { title: "Last Name", data: "last_name" },
                                 { title: "Gender", data: "gender" },
-                                { title: "Age", data: "age" },
+                                { title: "Viral_level", data:"viral_level" },
                                 { title: "Genotype", data: "genotype" },
                                 { title: "Blood Group", data: "blood_group" },
-                                { title: "Phone Number", data: "phone_number" },
+                                // { title: "Phone Number", data: "phone_number" },
                                 { title: "Date Taken", data: "date_taken" },
                                 // { title: "Actions" },
                             ],
